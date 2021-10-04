@@ -1,0 +1,3 @@
+# Aprendizados da semana
+
+Na *primeira semana* na **Labenu** tive acesso aos seguintes aprendizados: Diversidade; Como utilizar as plataformas (Slack, Zoom); Rotina da Labenu e tarefas diárias; História e composição dos computadores; Interface gráfica; Interação via Terminal; GitBash; Versionamento de projetos via git; Comandos do Terminal e do Git; Possibildiades do Git; Investigação criminal; Conceitos ligado a empregabilidade; Utilizar VScode. Bastante coisa para uma semana, hein? :)
