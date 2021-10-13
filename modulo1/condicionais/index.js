@@ -133,7 +133,7 @@ function venderIngresso(dadosParaVenda) {
     const quantidade = dadosParaVenda[4];
     const precoIngressoUnidade = verificarPrecoUnitario(etapa, categoria);
     if (tipo === `in`) {
-        const precoInternacionalUn = precoIngressoUnidade * 4.10;
+        const precoInternacionalUn = precoIngressoUnidade / 4.10;
         const precoInternacionalFinal = precoInternacionalUn * quantidade;
         console.log(`--- Dados da compra ---
 Nome do cliente: ${nome}
