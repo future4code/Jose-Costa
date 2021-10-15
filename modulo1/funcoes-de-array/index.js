@@ -39,23 +39,14 @@ const petsSalsichas = pets.filter((pets) => {
 });
 
 // c) Crie um novo array que possuirá mensagens para enviar para todos os clientes que são poodles. A mensagem deve ser: "Você ganhou um cupom de desconto de 10% para tosar o/a [NOME]!"
-const pets = [
-    { nome: "Lupin", raca: "Salsicha" },
-    { nome: "Polly", raca: "Lhasa Apso" },
-    { nome: "Madame", raca: "Poodle" },
-    { nome: "Quentinho", raca: "Salsicha" },
-    { nome: "Fluffy", raca: "Poodle" },
-    { nome: "Caramelo", raca: "Vira-lata" },
-]
-
 const petsPoodles = pets.filter((pets) => {
     if (pets.raca === `Poodle`) {
         return pets.raca;
     }
 });
 
-const mensagemDeDescontoPoodles = petsPoodles.map((elemento, index) => {
-    const nomeDoPet = pets[index].nome
+const mensagemDeDescontoPoodles = petsPoodles.map((animal, index) => {
+    const nomeDoPet = animal.nome;
     return `Você ganhou um cupom de desconto de 10% para tosar o/a ${nomeDoPet}`;
 });
 
@@ -75,31 +66,32 @@ const produtos = [
 ]
 
 // a) Crie um novo array que contenha apenas o nome de cada item.
-const listaDeProdutos = produtos.map((elemento, index) => {
-    return produtos[index].nome;
+const listaDeProdutos = produtos.map((produto) => {
+    return produto.nome;
 });
 
 // b) Crie um novo array que contenha um objeto com o nome e o preço de cada item, aplicando 5% de desconto em todos eles.
-const descontoCincoPorcento = produtos.map((elemento, index, array) => {
-    produtos[index].preco = produtos[index].preco - (produtos[index].preco * 0.05);
-    return elemento;
+const descontoCincoPorcento = produtos.map((produto) => {
+    produto.preco = (produto.preco - (produto.preco * 0.05)).toFixed(2);
+    return {nome: produto.nome, preco: Number(produto.preco)}
 });
 
 // c) c) Crie um novo array que contenha apenas os objetos da categoria Bebidas.
-const listaBebidas = produtos.filter((elemento) => {
-    if (produtos.categoria === `Bebidas`);
-    return elemento;
+const listaBebidas = produtos.filter((produto) => {
+    if (produto.categoria === `Bebidas`) {
+    return produto;
+    }
 });
 
 // d) Crie um novo array que contenha apenas os objetos cujo nome contenha a palavra "Ypê".
-const produtosYpe = produtos.filter((elemento, index) => {
-    if (produtos[index].nome.includes(`Ypê`)) {
-        return elemento;
+const produtosYpe = produtos.filter((produto) => {
+    if (produto.nome.includes(`Ypê`)) {
+        return produto;
     }
 });
 
 // e) Crie um novo array onde cada item é uma frase "Compre [NOME] por [PREÇO]". Esse array deve conter frases apenas dos itens cujo nome contenha a palavra "Ypê".
-const fraseProdutosYpe = produtosYpe.map((produtos, index) => {
+const fraseProdutosYpe = produtosYpe.map((produtos) => {
     return `Compre ${produtos.nome} por R$ ${produtos.preco}.`
 });
 
@@ -117,14 +109,14 @@ const pokemons = [
 ]
 
 // a) Crie um novo array que contenha apenas o nome dos pokémons em ordem alfabética.
-const pokemonsEmOrdemAlfabetica = pokemons.map((pokemon, index, array) => {
+const pokemonsEmOrdemAlfabetica = pokemons.map((pokemon) => {
     return pokemon.nome;
 });
 
 pokemonsEmOrdemAlfabetica.sort();
 
 // b) Crie um novo array apenas com os tipos dos pokémons, sem repetição:
-const tiposPokemon = pokemons.map((pokemon, index) => {
+const tiposPokemon = pokemons.map((pokemon) => {
     return pokemon.tipo;
 });
 
