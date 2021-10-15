@@ -1,4 +1,4 @@
-/* Exercícios de interpretação de código 
+/* Exercícios de interpretação de código: 
 
 - Questão 1:
 a) Será impresso no console uma repetição mostrando o primeiro objeto, o seu número de índice e o array completo em seguida.
@@ -54,7 +54,7 @@ const mensagemDeDescontoPoodles = petsPoodles.map((animal, index) => {
 
 const produtos = [
     { nome: "Alface Lavada", categoria: "Hortifruti", preco: 2.5 },
-    { nome: "Guaraná 2l", categoria: "Bebidas", preco: 7.8 },
+    { nome: "Guaraná 2l", categgitoria: "Bebidas", preco: 7.8 },
     { nome: "Veja Multiuso", categoria: "Limpeza", preco: 12.6 },
     { nome: "Dúzia de Banana", categoria: "Hortifruti", preco: 5.7 },
     { nome: "Leite", categoria: "Bebidas", preco: 2.99 },
