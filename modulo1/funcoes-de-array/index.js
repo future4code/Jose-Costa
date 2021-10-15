@@ -15,7 +15,7 @@ a) Será impresso uma cópia da array 'usuarios' sem a linha que tem os dados da
 
 // Exercícios de escrita de código:
 
-// Questão 1: Dado o seguinte array de cachorrinhos que são clientes de um pet shop, realize as operações pedidas nos itens abaixo utilizando as funções de array map e filter:
+// Questão 1: Dado o seguinte array de cachorrinhos que são clientes de um pet shop, realize as operações pedidas nos itens abaixo utilizando as funções de array map e filter.
 
 const pets = [
     { nome: "Lupin", raca: "Salsicha" },
