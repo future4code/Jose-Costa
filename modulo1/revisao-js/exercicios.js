@@ -114,7 +114,7 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
     } else if (ladoA == ladoB || ladoC == ladoA || ladoB == ladoC) {
         return `Isósceles`;
     } else if (ladoA !== ladoB !== ladoC !== ladoA) {
-        return `Escaleno`;
+        return `Escaleno`
     }
 }
 
