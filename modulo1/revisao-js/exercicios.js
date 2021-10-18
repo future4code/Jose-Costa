@@ -114,13 +114,53 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
     } else if (ladoA == ladoB || ladoC == ladoA || ladoB == ladoC) {
         return `Isósceles`;
     } else if (ladoA !== ladoB !== ladoC !== ladoA) {
-        return `Escaleno`
+        return `Escaleno`;
     }
 }
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-
+    let numeroMenor = Infinity;
+    function pegarMenorNumero(array) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] < numeroMenor) {
+                numeroMenor = array[i];
+            }
+        }
+        return numeroMenor;
+    }
+    let numeroMaior = 0;
+    function pegarMaiorNumero(array) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] > numeroMaior) {
+                numeroMaior = array[i];
+            }
+        }
+        return numeroMaior;
+    }
+    numeroMenor = pegarMenorNumero(array);
+    numeroMaior = pegarMaiorNumero(array);
+    let segundoMenorNumero = Infinity;
+    let segundoMaiorNumero = 0;
+    function pegarSegundoMenorNumero(array) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] < segundoMenorNumero && array[i] > numeroMenor) {
+                segundoMenorNumero = array[i];
+            }
+        }
+        return segundoMenorNumero;
+    }
+    function pegarSegundoMaiorNumero(array) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] > segundoMaiorNumero && array[i] < numeroMaior) {
+                segundoMaiorNumero = array[i];
+            }
+        }
+        return segundoMaiorNumero;
+    }
+    segundoMenorNumero = pegarSegundoMenorNumero(array);
+    segundoMaiorNumero = pegarSegundoMaiorNumero(array);
+    return [segundoMaiorNumero, segundoMenorNumero];
 }
 
 // EXERCÍCIO 11
