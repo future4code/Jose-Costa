@@ -53,7 +53,15 @@ function retornaNumerosPares(array) {
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
-
+    const listaNumerosParesElevadosADois = [];
+    let numerosParesElevadosADois = array.filter((elemento) => {
+        if (elemento % 2 === 0) {
+           let numeroParElevado = elemento * elemento;     
+           listaNumerosParesElevadosADois.push(numeroParElevado);
+        }
+    });
+    array = listaNumerosParesElevadosADois;
+    return array;
 }
 
 // EXERCÍCIO 06
