@@ -165,7 +165,13 @@ function retornaSegundoMaiorESegundoMenor(array) {
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-
+    function adicionarEspacoNosAteres(filme) {
+        for (let i = 0; i < filme.atores.length; i++) {
+            filme.atores[i] = ` ${filme.atores[i]}`;
+        }
+    }
+    adicionarEspacoNosAteres(filme);
+    return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores}.`;
 }
 
 // EXERCÍCIO 12
