@@ -20,7 +20,24 @@ function retornaArrayInvertido(array) {
 
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
-
+    let arrayOrdenado = [];
+    let indiceTotalArray = array.length;
+    for (let i = 0; i < indiceTotalArray; i++) {
+        let indiceNumeroMenor;
+        let numeroMenor = Infinity;
+        function pegarMenorNumero(array) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] < numeroMenor) {
+                    numeroMenor = array[i];
+                    indiceNumeroMenor = i;
+                }
+            }
+            arrayOrdenado.push(numeroMenor);
+            array.splice(indiceNumeroMenor, 1);
+        }
+        pegarMenorNumero(array);
+    }
+    return arrayOrdenado;
 }
 
 // EXERCÍCIO 04
