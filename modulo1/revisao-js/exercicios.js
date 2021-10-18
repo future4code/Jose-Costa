@@ -190,7 +190,7 @@ function retornaPessoasAutorizadas(pessoas) {
             return pessoa;
         }
     })
-  return pessoasAutorizadas;
+    return pessoasAutorizadas;
 }
 
 // EXERCÍCIO 13B
@@ -200,12 +200,21 @@ function retornaPessoasNaoAutorizadas(pessoas) {
             return pessoa;
         }
     })
-  return pessoasNaoAutorizadas;
+    return pessoasNaoAutorizadas;
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    for (let i = 0; i < contas.length; i++) {
+        let indiceCliente = i;
+        let saldoCliente = contas[i].saldoTotal;
+        for (let i = 0; i < contas[indiceCliente].compras.length; i++) {
+            saldoCliente -= contas[indiceCliente].compras[i];
+        }
+        contas[indiceCliente].saldoTotal = saldoCliente;
+        contas[indiceCliente].compras = [];
+    }
+    return contas;
 }
 
 // EXERCÍCIO 15A
