@@ -56,8 +56,8 @@ function retornaNumerosParesElevadosADois(array) {
     const listaNumerosParesElevadosADois = [];
     let numerosParesElevadosADois = array.filter((elemento) => {
         if (elemento % 2 === 0) {
-           let numeroParElevado = elemento * elemento;     
-           listaNumerosParesElevadosADois.push(numeroParElevado);
+            let numeroParElevado = elemento * elemento;
+            listaNumerosParesElevadosADois.push(numeroParElevado);
         }
     });
     array = listaNumerosParesElevadosADois;
@@ -69,10 +69,10 @@ function retornaMaiorNumero(array) {
     let numeroMaior = 0;
     for (let numero of array) {
         if (numero > numeroMaior) {
-            numeroMaior = numero; 
+            numeroMaior = numero;
         }
     }
-  return numeroMaior;
+    return numeroMaior;
 }
 
 // EXERCÍCIO 07
@@ -95,12 +95,27 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-
+    let numero = n;
+    n = [];
+    let numeroVerificado = 0;
+    for (let i = 0; i !== numero; numeroVerificado++) {
+        if (numeroVerificado % 2 === 0) {
+            i++;
+            n.push(numeroVerificado);
+        }
+    }
+    return n;
 }
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
-
+    if (ladoA === ladoB && ladoB === ladoC && ladoC === ladoA) {
+        return `Equilátero`;
+    } else if (ladoA == ladoB || ladoC == ladoA || ladoB == ladoC) {
+        return `Isósceles`;
+    } else if (ladoA !== ladoB !== ladoC !== ladoA) {
+        return `Escaleno`;
+    }
 }
 
 // EXERCÍCIO 10
