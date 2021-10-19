@@ -219,18 +219,22 @@ function retornaContasComSaldoAtualizado(contas) {
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-return consultas.sort(function (a, b) {
+    return consultas.sort(function (a, b) {
         if (a.nome > b.nome) {
-          return 1;
+            return 1;
         }
         if (a.nome < b.nome) {
-          return -1;
+            return -1;
         }
         return 0;
-      });
+    });
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-
+    return consultas.sort(function (a, b) {
+        let dataA = new Date(a.dataDaConsulta.split('/').reverse().join('-'));
+        let dataB = new Date(b.dataDaConsulta.split('/').reverse().join('-'));
+        return dataA - dataB; 
+    })
 }
