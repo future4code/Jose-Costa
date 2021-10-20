@@ -1,0 +1,58 @@
+body {
+    font-family: Verdana;
+    color: #808080;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#logo {
+    width: 50px;
+    margin-left: 0px;
+}
+
+#principal {
+    background-color: white;
+}
+
+#central {
+    background-color: #f7f7f7;
+    text-align: center;
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+}
+
+#titulo {
+    font-size: 7px;
+}
+
+hr {
+    margin: 12px 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #1e2b9e;
+}
+
+table {
+    margin: 0 auto;
+    width: 50%;
+    display: inline;
+}
+
+#imagem-produto {
+    border: solid 1px #808080;
+}
+
+form, label {
+    display: block;
+}
+
+label {
+    margin: 4px;
+}
+
+button {
+    margin: 10px;
+}

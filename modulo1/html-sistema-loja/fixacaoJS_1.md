@@ -1,4 +1,6 @@
-ˋˋˋ
+### Treino de JavaScript 1
+
+```
 function calculaSalario(qtdeCarrosVendidos, valorTotalVendas) {
   const salarioFixo = 2000;
   const comissaoPorCarro = qtdeCarrosVendidos * 100;
@@ -6,4 +8,4 @@ function calculaSalario(qtdeCarrosVendidos, valorTotalVendas) {
   const salarioFinal = salarioFixo + comissaoPorCarro + porcentagemPorVendas;
   return salarioFinal;
 }
-ˋˋˋ
+```
