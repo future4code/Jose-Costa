@@ -23,6 +23,9 @@ h2 {
 input {
     height: 20px;
     width: 500px;
+    border-right: none;
+    border-left: none;
+    border-top: none;
 }
 
 button:focus {
