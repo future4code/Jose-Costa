@@ -11,11 +11,6 @@
     list-style-position: inside;
 }
 
-.container #lista-ordenada {
-    color: yellow;
-    list-style: decimal;
-}
-
 div>p:first-child {
     display: inline;
 }
@@ -66,7 +61,13 @@ img {
     width: 15px;
 }
 
+.icone:hover {
+    opacity: 60%;
+}
 
+.icone:active {
+    opacity:100%;
+}
 /** 
   *
   *  ESTILOS HOME 
@@ -74,7 +75,7 @@ img {
   **/
 
 #container-de-descricao {
-    padding-top:80px;
+    padding-top: 80px;
     background-color: #2274a5;
     color: white;
 }
@@ -93,15 +94,13 @@ img {
     font-size: 60px;
 }
 
-
 /**
   *
   *  ESTILOS COMPRAR 
   *
   **/
 
-div:nth-child(2),
-div:last-child {
+div:nth-child(2), div:last-child {
     text-align: center;
 }
 
@@ -112,10 +111,11 @@ table {
 }
 
 .central {
-    margin:0 auto;
+    margin: 0 auto;
     width: 60%;
 }
-td,img {
+
+td, img {
     width: 25%;
 }
 
