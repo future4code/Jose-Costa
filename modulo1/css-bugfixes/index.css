@@ -7,8 +7,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Roboto;
-    list-style-position: inside;
+    font-family: 'Roboto';  
 }
 
 div>p:first-child {
@@ -53,7 +52,7 @@ img {
 }
 
 .container {
-    height: 40vh;
+    height: 37vh;
     text-align: center;
 }
 
@@ -68,6 +67,7 @@ img {
 .icone:active {
     opacity:100%;
 }
+
 /** 
   *
   *  ESTILOS HOME 
@@ -85,12 +85,12 @@ img {
 }
 
 #container-para-comprar {
+    padding-top: 30px;
     background-color: #e7eb90;
 }
 
 #container-para-comprar>p {
     color: #c44f00;
-    padding: 100px 0;
     font-size: 60px;
 }
 
@@ -102,21 +102,6 @@ img {
 
 div:nth-child(2), div:last-child {
     text-align: center;
-}
-
-table {
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-}
-
-.central {
-    margin: 0 auto;
-    width: 60%;
-}
-
-td, img {
-    width: 25%;
 }
 
 td button {
@@ -157,4 +142,23 @@ td button:hover {
 #button-voltar {
     margin-top: 40px;
     text-align: center;
+}
+
+.container p {
+    margin:5px;
+}
+table {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    font-size: 14px;
+}
+
+td, img {
+    width: 25%;
+}
+
+ol {
+    margin: 0 auto;
+    width: 20%;
 }
