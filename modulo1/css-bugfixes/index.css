@@ -104,7 +104,7 @@ table {
     margin:0 auto;
     width: 60%;
 }
-td, img {
+td,img {
     width: 25%;
 }
 
@@ -114,6 +114,14 @@ td button {
     height: 30px;
     border-radius: 5px;
     color: black;
+}
+
+td button:active {
+    color: white;
+}
+
+td button:hover {
+    background-color: #ccad22;
 }
 
 .container-do-search {
