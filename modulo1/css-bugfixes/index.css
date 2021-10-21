@@ -67,6 +67,7 @@ div img {
   **/
 
 #container-de-descricao {
+    padding-top:15px;
     background-color: #2274a5;
     color: white;
 }
@@ -76,7 +77,6 @@ div img {
 }
 
 #container-para-comprar {
-    display:block;
     background-color: #e7eb90;
 }
 
