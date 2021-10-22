@@ -1,0 +1,164 @@
+/** 
+  *
+  *  ESTILOS GERAIS 
+  *
+  **/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto';  
+}
+
+div>p:first-child {
+    display: inline;
+}
+
+h2 {
+    background-color: #fe7e02;
+    padding: 10px 5px 10px 5px;
+    color: white;
+    text-align: center;
+}
+
+input {
+    height: 20px;
+    width: 500px;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}
+
+button:focus {
+    color: white;
+}
+
+img {
+    width: 100px;
+}
+
+.botao-amarelo {
+    margin-top: 40px;
+    background-color: #ffaf43;
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+}
+
+.botao-amarelo:hover {
+    background-color: #c44f00;
+}
+
+.container {
+    height: 37vh;
+    text-align: center;
+}
+
+.icone {
+    width: 15px;
+}
+
+.icone:hover {
+    opacity: 60%;
+}
+
+.icone:active {
+    opacity:100%;
+}
+
+/** 
+  *
+  *  ESTILOS HOME 
+  *
+  **/
+
+#container-de-descricao {
+    padding-top: 80px;
+    background-color: #2274a5;
+    color: white;
+}
+
+#container-de-descricao>ol {
+    padding: 15px 0px;
+}
+
+#container-para-comprar {
+    padding-top: 30px;
+    background-color: #e7eb90;
+}
+
+#container-para-comprar>p {
+    color: #c44f00;
+    font-size: 60px;
+}
+
+/**
+  *
+  *  ESTILOS COMPRAR 
+  *
+  **/
+
+div:nth-child(2), div:last-child {
+    text-align: center;
+}
+
+td button {
+    background-color: #fadf63;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: black;
+}
+
+td button:active {
+    color: white;
+}
+
+td button:hover {
+    background-color: #ccad22;
+}
+
+.container-do-search {
+    margin-top: 20px;
+    height: 80px;
+}
+
+#back-button {
+    background-color: white;
+    width: 100px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 10px;
+    color: black;
+}
+
+#back-button:hover {
+    background-color: #635a3d
+}
+
+#button-voltar {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.container p {
+    margin:5px;
+}
+table {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    font-size: 14px;
+}
+
+td, img {
+    width: 25%;
+}
+
+ol {
+    margin: 0 auto;
+    width: 20%;
+}
