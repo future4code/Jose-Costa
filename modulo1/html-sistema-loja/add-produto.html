@@ -5,113 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Adicionar Produto</title>
+    <title>Joga Nada | adicionar produto</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <table>
-        <tr>
-            <th>✔ JogaNada | Compre tudo, jogue nada.</th>
-        </tr>
-        <tr>
-            <td>
+
+    <div id="principal">
+        <div id="central">
+            <header id="titulo">
+                <img id="logo" src="https://www.svgrepo.com/show/61115/soccer-boots.svg" alt="Logo da JogaNada"></a>
+                <h1>JogaNada <stan style="color: #1e2b9e">|</stan> compre tudo, jogue nada</h1>
+            </header>
+
+            <div class="divisao">
                 <hr>
-            </td>
-        </tr>
+            </div>
 
-        <tr>
-            <td>
-                <a href="index.html">Página Inicial</a> |
-                <a href="ctrl-estoque.html">Controle de Estoque</a> |
-                <a href="add-produto.html">Adicionar Produto</a> |
-                <a href="funcionarios.html">Funcionários</a>
+            <div id="menu">
+                <tr>
+                    <td>
+                        <a href="index.html">Página Inicial</a> |
+                        <a href="ctrl-estoque.html">Controle de Estoque</a> |
+                        <a href="add-produto.html">Adicionar Produto</a> |
+                        <a href="funcionarios.html">Funcionários</a>
+                    </td>
+                </tr>
+            </div>
 
-            </td>
-        </tr>
-
-        <tr>
-            <td>
+            <div class="divisao">
                 <hr>
-            </td>
-        </tr>
-    </table>
-    <p>🛒Adicionar produtos:</p> <br>
+            </div>
 
-    <form action="">
-        <table>
-            <tr>
-                <td>
-                    <label for="link-foto">Link para foto: </label>
-                </td>
-                <td>
-                    <input type="url" id="link-foto" name="link-foto">
-                </td>
-            </tr>
+            <p>
+                <stan style="color: #1e2b9e">🛒Adicionar produtos:</stan>
+            </p>
 
-            <tr>
-                <td>
-                    <label for="descricao">Descrição do produto: </label>
-                </td>
-                <td>
-                    <!-- Adicione o id apropriado para o input abaixo -->
-                    <input type="text" id="descricao" name="descrição">
-                </td>
-            </tr>
+            <form action="">
+                <label for="link-foto">Link para foto: </label>
+                <input type="url" id="link-foto" name="link-foto">
 
-            <tr>
-                <td>
-                    <label for="preco">Preço (em R$): </label>
-                </td>
-                <td>
-                    <!-- Adicione o id apropriado e o type para receber números abaixo -->
-                    <input type="number" id="preco" name="preco">
-                </td>
-            </tr>
+                <label for="descricao">Descrição do produto: </label>
+                <!-- Adicione o id apropriado para o input abaixo -->
+                <input type="text" id="descricao" name="descrição">
 
-            <tr>
-                <td>
-                    <!-- Preencha as propriedades necessárias para os elementos abaixo -->
-                    <label for="disponiveis">Números disponíveis: </label>
-                </td>
-                <td>
-                    <input type="text" id="disponiveis" name="disponiveis">
-                </td>
-            </tr>
+                <label for="preco">Preço (em R$): </label>
+                <!-- Adicione o id apropriado e o type para receber números abaixo -->
+                <input type="number" id="preco" name="preco">
 
-            <td>
-            <th>
+                <!-- Preencha as propriedades necessárias para os elementos abaixo -->
+                <label for="disponiveis">Tamanhos disponíveis: </label>
+                <input type="text" id="disponiveis" name="disponiveis">
+
                 <div class="form-add">
                     <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
                     <button type="submit">Adicionar</button>
-            </th>
+
+                </div>
+            </form>
+
+            <div class="divisao">
+                <hr>
             </div>
-            </td>
-    </form>
-    <tr>
-        <td>
-            <hr>
-        </td>
-        <td>
-            <hr>
-        </td>
-        <td>
-            <hr>
-        </td>
-</table>
 
-<table>
-    <td>
-        <img src="https://cdn-icons-png.flaticon.com/128/3030/3030710.png" />
-    </td>
-    <td>instagram: @joganada <br>
-        contato@joganada.com.br <br>
-        (83) 94242-4242
-    </td>
-    </tr>
-</table>
-</body>
-
-</html>
+            <footer>
+                <table class="footer">
+                    <td>
+                        <img src="https://cdn-icons-png.flaticon.com/128/3030/3030710.png" />
+                    </td>
+                    <td>instagram<stan style="color: #1e2b9e">: @</stan>joganada <br>
+                        contato<stan style="color: #1e2b9e">@</stan>joganada<stan style="color: #1e2b9e">.</stan>com<stan style="color: #1e2b9e">.</stan>br <br>
+                        <stan style="color: #1e2b9e">(</stan>83<stan style="color: #1e2b9e">)</stan> 94242-4242
+                    </td>
+                    </tr>
+            </footer>
+        </div>
+    </div>
 
 </body>
 
