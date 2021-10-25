@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 7vh;
+    align-items: center;
+    background-color: mediumvioletred;
+}
+
+.logo {
+    margin: 0 15px;
+    display: flex;
+    width: 10vw;
+    align-items: center;
+}
+
+.login {
+    margin: 0 15px;
+}
+
+.logo img {
+    height: 3vh;
+    margin-right: 10px;
+}
+
+footer {
+    width: 100vw;
+    height: 7vh;
+    background-color: mediumvioletred;
+    text-align: center;
+    font-weight: bold;
+}
+
+.conteudo-container {
+    justify-content: start;
+    background-color: #f2d0e0;
+    display: flex;
+    flex-grow: 1;
+}
+
+.menu {
+    margin: 15px;
+    width: 18vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-icone {
+    height: 2.5vh;
+}
+
+nav {
+    padding-left: 10px;
+    flex-grow: 1;
+}
+
+.seta-icone {
+    color: lightgray;
+    text-align: end;
+    height: 2.5vh;
+}
+
+section {
+    flex-grow: 1;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.produto-container {
+    text-align: center;
+    width: 16vw;
+    height: 40vh;
+    box-shadow: 2px 2px 2px darkgray;
+    margin: 9px;
+    justify-self: start;
+}
+ 
+.produto-container .bolo-imagem {
+    width: 16vw;
+    height: 30vh;
+}
+
+.produto-container h3 {
+    margin: -4px;
+}
+
+.produto-container p {
+    font-size: 14px;
+}
