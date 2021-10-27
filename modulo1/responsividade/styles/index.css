@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ef843a;
+    height: 8vh;
+    align-items: center;
+}
+
+.logo {
+    width: 20vw;
+    margin-left: 1vw
+}
+
+.busca-header {
+    display: flex;
+    margin-right: 2vw;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-media {
+    font-size: 1rem;
+    margin: 1vw;
+    border: 1px solid black;
+    width: 20%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-media:hover {
+    box-shadow: 5px 5px 5px darkgray;
+}
+
+.container-media video {
+    width: 100%;
+    height: auto;
+}
+
+.container-media p {
+    margin: 1vw;
+}
+
+footer {
+    display: flex;
+    background-color: #323b3e;
+    color: white;
+    height: 8vh;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Responsividade */
+
+#video9 {
+    display: none;
+}
+
+@media screen and (min-width: 481px) and (max-width: 800px) {
+    .container-media {
+        font-size: 1rem;
+        margin: 1vw;
+        border: 1px solid black;
+        width: 30%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .container-media p {
+        font-size: 0.8rem;
+    }
+    #video9 {
+        display: inline-block;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .container {
+        min-width: 172px;
+        height: auto;
+    }
+    .container-media {
+        font-size: 1rem;
+        margin: 2vw;
+        border: 1px solid black;
+        width: auto;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+    .container-media p {
+        font-size: 0.8rem;
+    }
+    #video9 {
+        display: none;
+    }
+}
+    
+@media screen and (min-width: 0px) and (max-width: 319px) {
+    .container {
+        min-width: 172px;
+        height: auto;
+    }
+    .container-media {
+        font-size: 1rem;
+        margin: 4vw;
+        border: 1px solid black;
+        width: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .container-media p {
+        font-size: 0.8rem;
+    }
+    #video9 {
+        display: none;
+    }
+
+    .busca-header {
+        width: 30vw;
+    }
+}
