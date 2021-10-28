@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ef843a;
+    height: 8vh;
+    align-items: center;
+}
+
+.logo {
+    width: 20vw;
+    margin-left: 1vw
+}
+
+.busca-header {
+    display: flex;
+    margin-right: 2vw;
+}
+
+footer {
+    display: flex;
+    background-color: #323b3e;
+    color: white;
+    height: 8vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-video {
+    display: flex;
+    justify-content: center;
+}
+
+.video-card {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+}
+
+.video-player video {
+    width: 100%;
+}
+
+.video-card h3 {
+    margin: 1vw;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Responsividade */
+
+@media screen and (min-width: 481px) and (max-width: 800px) {
+    .video-card {
+        margin-top: 3vh;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 1px) and (max-width: 480px) {
+    .video-card {
+        margin-top: 3vh;
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        height: 100%;
+    }
+
+    .busca-header {
+        width: 30vw;
+    }
+
+    .container {
+        min-width: 180px;
+    }
+
+}
