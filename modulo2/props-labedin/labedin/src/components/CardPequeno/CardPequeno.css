@@ -1,0 +1,22 @@
+.littlecard-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+    height: 100px;
+}
+
+.littlecard-container > img {
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.littlecard-items {
+    display: flex;
+}
+
+.littlecard-items h4 {
+    margin-right: 5px;
+}
