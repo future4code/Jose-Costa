@@ -93,14 +93,14 @@ class Post extends React.Component {
 
   onClickComentario = () => {
     this.setState({
-      comentando: !this.state.comentando
+      comentando: true,
     })
   }
 
   aoEnviarComentario = () => {
     this.setState({
-      comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
+      comentando: true,
+      numeroComentarios: this.state.numeroComentarios + 1,
     })
   }
 
@@ -156,8 +156,8 @@ class Post extends React.Component {
     if (this.state.compartilhando) {
       const iconeTwiter = "https://www.pinclipart.com/picdir/big/539-5394328_twitter-icon-png-twitter-icon-outline-png-clipart.png";
       const iconeFacebook = "https://www.pinclipart.com/picdir/big/173-1736344_facebook-f-png-facebook-f-icon-png-clipart.png";
-      secaoFacebook = <IconeCompartilhamento onClick={this.onClickTwitter} src={iconeTwiter} alt="Ícone Twitter"></IconeCompartilhamento>;
-      secaoTwitter = <IconeCompartilhamento onClick={this.onClickFacebook} src={iconeFacebook} alt="Ícone Facebook"></IconeCompartilhamento>;
+      secaoTwitter = <IconeCompartilhamento onClick={this.onClickTwitter} src={iconeTwiter} alt="Ícone Twitter"></IconeCompartilhamento> 
+      secaoFacebook = <IconeCompartilhamento onClick={this.onClickFacebook} src={iconeFacebook} alt="Ícone Facebook"></IconeCompartilhamento>;
     }
 
     return <PostContainer>
