@@ -1,6 +1,6 @@
 ### Exercício: Renderização Condicional - Labenu Forms
 
-### Descrição:
+### Descrição
 - Página com formulário de cadastro estruturado com React;
 - Renderização condicional com etapas que dependem da resposta do usuário;
 - Desafios concluídos.
