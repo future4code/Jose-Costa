@@ -1,6 +1,6 @@
 ### Insta4: página de postagem de fotos
 
-### Descrição
+### O que funciona
 - Página com funcionalidades semelhantes ao Instagram;
 - Exercício de React, explorando estados e os componentes de classe;
 - Desafios concluídos: adicionado mais funcionalidades ao projeto.
