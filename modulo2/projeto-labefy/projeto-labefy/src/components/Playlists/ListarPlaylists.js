@@ -35,15 +35,15 @@ class ListarPlaylists extends React.Component {
         return (
             <div onClick={this.props.fecharCriarPlaylists}>
                 <div>
-                    Lista Playlists:
-                    {this.state.listaPlaylists.length > 0 ? this.state.listaPlaylists.map((elemento, id) => {
+                    {this.state.listaPlaylists.length ? this.state.listaPlaylists.map((elemento, id) => {
                         return (
-                            <div>
-                                <p> {elemento.name} </p>
-                                <DeletarPlaylist idPlaylist={elemento.id} fecharCriarPlaylists={this.props.fecharCriarPlaylists}/>
+                            <div key={id}>
+                                <p onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name)}>{elemento.name}</p>
+                                <DeletarPlaylist idPlaylist={elemento.id} fecharCriarPlaylists={this.props.fecharCriarPlaylists} blur={this.props.blur} />
                             </div>
                         )
-                    }) : <p>Adicione uma playlist.</p>}
+                    }) : <p>Adicione uma playlist</p>}
+
                 </div>
             </div>
         )

@@ -24,7 +24,7 @@ class Playlists extends React.Component {
                     {this.state.criarPlaylist && <CriarPlaylists fecharCriarPlaylists={this.abrirCriarPlaylist} />}
                 </div>
                 <div>
-                    <ListarPlaylists fecharCriarPlaylists={this.fecharCriarPlaylist} />
+                    <ListarPlaylists fecharCriarPlaylists={this.fecharCriarPlaylist} exibirDetalhes={this.props.exibirDetalhes} />
                 </div>
             </div>
         )
