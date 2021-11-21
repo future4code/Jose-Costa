@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
 
-class DeletarMusica extends React.Component {
+import { MdDeleteForever } from "react-icons/md";
 
+class DeletarMusica extends React.Component {
     deletarMusica = async () => {
         const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.idPlaylist}/tracks/${this.props.idMusica}`
         try {
@@ -20,7 +21,7 @@ class DeletarMusica extends React.Component {
 
     render() {
         return (
-            <button onClick={this.deletarMusica}>-</button>
+            <MdDeleteForever onClick={this.deletarMusica} />
         )
     }
 }

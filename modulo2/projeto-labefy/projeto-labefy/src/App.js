@@ -1,75 +1,13 @@
 import React from "react";
 import GlobalStyle from "./components/App/GlobalStyle";
-import styled from "styled-components"
 
+import Inicio from "./components/Inicio/Inicio";
 import Playlists from "./components/Playlists/Playlists";
 import Explorar from "./components/Explorar/Explorar";
 import DetalhesPlaylist from "./components/Playlists/DetalhesPlaylist";
 import Player from "./components/Player/Player";
 
-const ContainerPrincipal = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #030303;
-  height: 100vh;
-`
-
-const ContainerHeader = styled.div`
-  display: flex;
-  height: 7vh;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid #1e1e1e;
-`
-
-const ContainerLogo = styled.div`
-  display: flex;
-  align-items: center;
-  color: white;
-  justify-content: start;
-  cursor: pointer;
-
-  img {
-    height: 6vh;
-    padding-left: 1vw;
-  }
-
-  h3 { 
-    text-indent: 1vw;
-  }
-`
-
-const ContainerMenu = styled.div`
-  display: flex;
-  justify-content: center;
-  flex: 2;
-
-  button {
-    background-color: #030303;
-    color: gray;
-    border: none;
-    font-size: 1rem;
-    font-weight: bold;
-    margin: 1vw;
-    cursor: pointer;
-  }
-`
-
-const ContainerMain = styled.div`
-    height: 70vh;
-    display: flex;
-`
-
-const ContainerFooter = styled.div`
-  display: flex;
-  height: 7vh;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  bottom: 0;
-`
+import { ContainerPrincipal, ContainerHeader, ContainerLogo, ContainerMenu, ContainerMain, ContainerFooter } from "./components/App/Styles";
 
 class App extends React.Component {
   state = {
@@ -82,6 +20,7 @@ class App extends React.Component {
     inicioAtivo: "white",
     explorarAtivo: "",
     playlistsAtivo: "",
+    idArrayPlaylist: "",
   }
 
   alteraPagina = (e) => {
@@ -107,14 +46,39 @@ class App extends React.Component {
         playlistsAtivo: "white"
       })
     }
-
   }
 
-  exibirDetalhes = (idPlaylist, namePlaylist) => {
+  alterarPagina = (pagina) => {
+    if (pagina === "inicio") {
+      this.setState({
+        paginaAtual: pagina,
+        inicioAtivo: "white",
+        explorarAtivo: "gray",
+        playlistsAtivo: "gray"
+      })
+    } else if (pagina === "explorar") {
+      this.setState({
+        paginaAtual: pagina,
+        inicioAtivo: "gray",
+        explorarAtivo: "white",
+        playlistsAtivo: "gray"
+      })
+    } else {
+      this.setState({
+        paginaAtual: pagina,
+        inicioAtivo: "gray",
+        explorarAtivo: "gray",
+        playlistsAtivo: "white"
+      })
+    }
+  }
+
+  exibirDetalhes = (idPlaylist, namePlaylist, idArrayPlaylist) => {
     this.setState({
       paginaAtual: "detalhes",
       idPlaylistDetalhes: idPlaylist,
       nomePlaylistDetalhes: namePlaylist,
+      idArrayPlaylist: idArrayPlaylist,
     })
     return idPlaylist;
   }
@@ -143,13 +107,14 @@ class App extends React.Component {
         </ContainerHeader>
 
         <ContainerMain>
+        {this.state.paginaAtual === "inicio" && <Inicio exibirDetalhes={this. exibirDetalhes} alterarPagina={this.alterarPagina} playerMusica={this.playerMusica} />}
           {this.state.paginaAtual === "playlists" && <Playlists exibirDetalhes={this.exibirDetalhes} />}
           {this.state.paginaAtual === "explorar" && <Explorar playerMusica={this.playerMusica} />}
-          {this.state.paginaAtual === "detalhes" && <DetalhesPlaylist playerMusica={this.playerMusica} idPlaylist={this.state.idPlaylistDetalhes} nomePlaylist={this.state.nomePlaylistDetalhes} />}
+          {this.state.paginaAtual === "detalhes" && <DetalhesPlaylist alterarPagina={this.alterarPagina} playerMusica={this.playerMusica} idPlaylist={this.state.idPlaylistDetalhes} nomePlaylist={this.state.nomePlaylistDetalhes} idArrayPlaylist={this.state.idArrayPlaylist} />}
         </ContainerMain>
 
         <ContainerFooter>
-          <Player musica={this.state.playerMusica} artista={this.state.playerArtista} url={this.state.playerUrl} />
+          <Player musica={this.state.playerMusica} artista={this.state.playerArtista} url={this.state.playerUrl} playerAtivo={this.playerMusica} />
         </ContainerFooter>
         <GlobalStyle />
       </ContainerPrincipal>

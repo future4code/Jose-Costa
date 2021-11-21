@@ -1,4 +1,16 @@
 const ListaMusicas = [
+    { nome: "Elysium", artista: "Alexander Nakarada", url: "https://www.free-stock-music.com/music/alexander-nakarada-elysium.mp3" },
+    { nome: "Patterns In The Sky", artista: "Vlad Gluschenko", url: "https://www.free-stock-music.com/music/vlad-gluschenko-patterns-in-the-sky.mp3" },
+    { nome: "Kindness", artista: "Vlad Gluschenko", url: "https://www.free-stock-music.com/music/vlad-gluschenko-kindness.mp3" },
+    { nome: "Music To Wear Fingerless Gloves To", artista: "Punch Deck", url: "https://www.free-stock-music.com/music/punch-deck-music-to-wear-fingerless-gloves-to.mp3" },
+    { nome: "Tragedy", artista: "MaxKoMusic", url: "https://www.free-stock-music.com/music/maxkomusic-tragedy.mp3" },
+    { nome: "TEMPEST", artista: "Audionautix", url: "https://www.free-stock-music.com/music/audionautix-tempest.mp3" },
+    { nome: "GET AWAY", artista: "tubebackr", url: "https://www.free-stock-music.com/music/tubebackr-get-away.mp3" },
+    { nome: "Lipsia", artista: "Sapajou", url: "https://www.free-stock-music.com/music/sapajou-lipsia.mp3" },
+    { nome: "Worry Less", artista: "Sapajou", url: "https://www.free-stock-music.com/music/sapajou-worry-less.mp3" },
+    { nome: "Cuba", artista: "ASHUTOSH", url: "https://www.free-stock-music.com/music/ashutosh-cuba.mp3" },
+    { nome: "Rainy Days", artista: "Scandinavianz", url: "https://www.free-stock-music.com/music/scandinavianz-rainy-days.mp3" },
+    { nome: "One Wish", artista: "Roa Music", url: "https://www.free-stock-music.com/music/roa-music-one-wish.mp3" },
     { nome: "Ukulele", artista: "Bensound", url: "https://www.bensound.com/bensound-music/bensound-ukulele.mp3" },
     { nome: "Criative Minds", artista: "Bensound", url: "https://www.bensound.com/bensound-music/bensound-creativeminds.mp3" },
     { nome: "A New Beginning", artista: "Bensound", url: "https://www.bensound.com/bensound-music/bensound-anewbeginning.mp3" },
@@ -16,7 +28,6 @@ const ListaMusicas = [
     { nome: "Sunny", artista: "Bensound", url: "https://www.bensound.com/bensound-music/bensound-sunny.mp3" },
     { nome: "Energy", artista: "Bensound", url: "https://www.bensound.com/bensound-music/bensound-energy.mp3" },
     { nome: "Epic", artista: "Bensound", url: "https://www.bensound.com/bensound-music/bensound-epic.mp3" },
-    { nome: "Tenderness", artista: "Bensound", url: "https://www.bensound.com/bensound-music/bensound-tenderness.mp3" },
     { nome: "Funny Song", artista: "Bensound", url: "https://www.bensound.com/bensound-music/bensound-funnysong.mp3" },
     { nome: "Once Again", artista: "Bensound", url: "https://www.bensound.com/bensound-music/bensound-onceagain.mp3" },
     { nome: "Tomorrow", artista: "Bensound", url: "https://www.bensound.com/bensound-music/bensound-tomorrow.mp3" },
@@ -55,7 +66,6 @@ const ListaMusicas = [
     { nome: "Aurora", artista: "Scott Buckley", url: "https://www.free-stock-music.com/music/scott-buckley-aurora.mp3" },
     { nome: "Worthy Rivals", artista: "Arthur Vyncke", url: "https://www.free-stock-music.com/music/arthur-vyncke-worthy-rivals.mp3" },
     { nome: "Sunrise In Your Eyes", artista: "Scandinavianz", url: "https://www.free-stock-music.com/music/scandinavianz-sunrise-in-your-eyes.mp3" },
-    { nome: "Cuba", artista: "ASHUTOSH", url: "https://www.free-stock-music.com/music/ashutosh-cuba.mp3" },
 ]
 
 export default ListaMusicas;

@@ -2,6 +2,9 @@ import React from "react";
 import CriarPlaylists from "./CriarPlaylists";
 import ListarPlaylists from "./ListarPlaylists";
 
+import { ContainerPlaylist, TituloContainer, ContainerNovaPlaylist, NovaPlaylist, ContainerListas } from "./Styles/Style-Playlists";
+import { MdPlaylistAdd } from "react-icons/md";
+
 class Playlists extends React.Component {
     state = {
         criarPlaylist: false,
@@ -18,15 +21,16 @@ class Playlists extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <button onClick={this.abrirCriarPlaylist}>Criar Playlists</button>
+            <ContainerPlaylist>
+                <ContainerNovaPlaylist>
+                    <NovaPlaylist onClick={this.abrirCriarPlaylist}><MdPlaylistAdd /> Nova playlist </NovaPlaylist>
                     {this.state.criarPlaylist && <CriarPlaylists fecharCriarPlaylists={this.abrirCriarPlaylist} />}
-                </div>
-                <div>
+                </ContainerNovaPlaylist>
+                <TituloContainer>Suas playlists:</TituloContainer>
+                <ContainerListas>
                     <ListarPlaylists fecharCriarPlaylists={this.fecharCriarPlaylist} exibirDetalhes={this.props.exibirDetalhes} />
-                </div>
-            </div>
+                </ContainerListas>
+            </ContainerPlaylist>
         )
     }
 }

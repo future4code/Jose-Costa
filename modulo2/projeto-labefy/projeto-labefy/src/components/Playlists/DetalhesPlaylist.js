@@ -1,6 +1,11 @@
 import axios from "axios";
 import React from "react";
-import DeletarMusica from "./DeletarMusica";
+
+import DeletarMusica from "./Musicas/DeletarMusica";
+import DeletarPlaylist from "./DeletarPlaylist";
+
+import { ContainerDetalhes, TituloContainer, ContainerLivre, ContainerPrincipalMusicas, ContainerMusicas, CardMusica, BotaoVoltar } from "./Styles/Style-DetalhesPlaylist";
+import { MdPlayCircleFilled } from "react-icons/md";
 
 class DetalhesPlaylist extends React.Component {
     state = {
@@ -17,7 +22,6 @@ class DetalhesPlaylist extends React.Component {
     }
 
     detalharPlaylist = async () => {
-        console.log("b")
         const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.idPlaylist}/tracks`
         try {
             const res = await axios.get(url, {
@@ -31,28 +35,39 @@ class DetalhesPlaylist extends React.Component {
             })
         }
         catch (err) {
-            console.log(err.response.data)
+
         }
     }
 
     render() {
+        let imagemPlaylist;
         return (
-            <div>
-                <div>
-                    Playlist: {this.props.nomePlaylist}
-                    {this.state.listaMusicas.map((elemento, id) => {
-                        return (
-                            <div key={elemento.id}>
-                                Artista: {elemento.artist} - Música: {elemento.name} 
-                                <button onClick={() => this.enviarMusicaAtual(elemento.name, elemento.artist, elemento.url)}>Escutar</button>
-                                <DeletarMusica idMusica={elemento.id} idPlaylist={this.props.idPlaylist} atualizarLista={this.detalharPlaylist} />
-                            </div>
-                        )
-                    })}
-
+            <ContainerDetalhes>
+                <ContainerLivre>
                     {this.state.quantidadeMusicas === 0 ? <p></p> : <p>Total de músicas: {this.state.quantidadeMusicas}</p>}
-                </div>
-            </div>
+                    <BotaoVoltar onClick={() => this.props.alterarPagina("playlists")}>Voltar</BotaoVoltar>
+                    <DeletarPlaylist idPlaylist={this.props.idPlaylist} alterarPagina={() => this.props.alterarPagina("playlists")} alteraPagina={1} />
+                </ContainerLivre>
+                <TituloContainer> Playlist: {this.props.nomePlaylist}</TituloContainer>
+                <ContainerPrincipalMusicas>
+                {this.state.quantidadeMusicas === 0 && <p>Você pode adicionar suas músicas preferidas aqui. Conheça novas músicas no menu "Explorar".</p> }
+                    <ContainerMusicas>
+                        {this.state.listaMusicas.map((elemento, id) => {
+                            console.log(elemento)
+                            imagemPlaylist = `https://loremflickr.com/200/200/music?lock=${this.props.idArrayPlaylist + id}`
+                            return (
+                                <CardMusica key={elemento.id}>
+                                    <img src={imagemPlaylist} alt="Imagem da Música" />
+                                    <p onClick={() => this.enviarMusicaAtual(elemento.name, elemento.artist, elemento.url)}>{elemento.name} - {elemento.artist} </p>
+                                    <MdPlayCircleFilled onClick={() => this.enviarMusicaAtual(elemento.name, elemento.artist, elemento.url)} />
+                                    <DeletarMusica idMusica={elemento.id} idPlaylist={this.props.idPlaylist} atualizarLista={this.detalharPlaylist} />
+                                </CardMusica>
+                            )
+                        })}
+
+                    </ContainerMusicas>
+                </ContainerPrincipalMusicas>
+            </ContainerDetalhes>
         )
     }
 }

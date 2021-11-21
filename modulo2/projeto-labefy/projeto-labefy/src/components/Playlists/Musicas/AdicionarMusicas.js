@@ -1,32 +1,8 @@
 import axios from "axios";
 import React from "react";
-import styled from "styled-components";
 
+import { ContainerAdicionarMusicas, PopUp, ContainerBotoes, BotaoFechar, MensagemConfirmacao, Select } from "./Styles/Style-AdicionarMusicas";
 import { MdQueue } from "react-icons/md";
-
-const ContainerAdicionarMusicas = styled.div`
-    width: 15vw;
-    height: 14vh;
-    background-color: gray;
-    position: fixed;
-    z-index: 2;
-    background-color: rgba(10,23,55,0.10);
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    div {
-        width: 30vw;
-        background-color: black;
-        color: white;
-        display: flex;
-        flex-direction: column;
-    }
-`
 
 class AdicionarMusicas extends React.Component {
     state = {
@@ -54,7 +30,7 @@ class AdicionarMusicas extends React.Component {
         this.detalharPlaylist();
     }
 
-     listarPlaylists = async () => {
+    listarPlaylists = async () => {
         const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
         try {
             const res = await axios.get(url, {
@@ -70,7 +46,7 @@ class AdicionarMusicas extends React.Component {
     }
 
     adicionarMusicas = async () => {
-         let verificarExistencia = false;
+        let verificarExistencia = false;
         const verificarDuplicidade = this.state.musicasPlaylistSelecionada.filter((elemento) => {
             if (elemento.url === this.props.url) {
                 verificarExistencia = true;
@@ -79,7 +55,7 @@ class AdicionarMusicas extends React.Component {
         if (!this.state.playlistSelecionada) {
             this.setState({ statusMsg: "Adicione uma playlist válida." })
         } else if (verificarExistencia) {
-                this.setState({ statusMsg: "Essa música já está nessa playlist." })
+            this.setState({ statusMsg: "Essa música já está nessa playlist." })
         } else {
 
             const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.state.playlistSelecionada}/tracks`
@@ -105,7 +81,6 @@ class AdicionarMusicas extends React.Component {
                 })
                 this.detalharPlaylist();
             }
-            setTimeout(this.abrirAdicionarMusicas, 5000)
         }
     }
 
@@ -130,17 +105,20 @@ class AdicionarMusicas extends React.Component {
                 <MdQueue onClick={this.abrirAdicionarMusicas} />
                 {this.state.conf &&
                     <ContainerAdicionarMusicas>
-                        <div>
-                            <select onChange={this.salvarPlaylistSelecionada}>
+                        <PopUp>
+                            <BotaoFechar onClick={this.abrirAdicionarMusicas}>✖️</BotaoFechar>
+                            <p>Adicione a música na playlist desejada:</p>
+                            <Select onChange={this.salvarPlaylistSelecionada}>
                                 <option value={false}>Selecione uma playlist:</option>
                                 {this.state.listaPlaylists.map((elemento) => {
                                     return <option value={elemento.id}>{elemento.name}</option>
                                 })}
-                            </select>
-                            {this.state.statusMsg}
-                            <button onClick={this.adicionarMusicas}>Adicionar</button>
-                            <button onClick={this.abrirAdicionarMusicas}>X</button>
-                        </div>
+                            </Select>
+                            <ContainerBotoes>
+                                <button onClick={this.adicionarMusicas}>Adicionar</button>
+                            </ContainerBotoes>
+                            <MensagemConfirmacao>{this.state.statusMsg}</MensagemConfirmacao>
+                        </PopUp>
                     </ContainerAdicionarMusicas>
                 }
             </div>

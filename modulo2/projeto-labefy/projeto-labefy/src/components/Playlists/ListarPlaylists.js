@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import DeletarPlaylist from "./DeletarPlaylist";
 
+import { ContainerCardPlaylist, CardPlaylist, CardImagem, ImagemFundo, ImagemPlay, InfoPlaylist } from "./Styles/Style-ListarPlaylists";
+
 class ListarPlaylists extends React.Component {
     state = {
         listaPlaylists: [],
@@ -32,20 +34,29 @@ class ListarPlaylists extends React.Component {
     }
 
     render() {
+        let imagemPlaylist;
         return (
-            <div onClick={this.props.fecharCriarPlaylists}>
-                <div>
-                    {this.state.listaPlaylists.length ? this.state.listaPlaylists.map((elemento, id) => {
-                        return (
-                            <div key={id}>
-                                <p onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name)}>{elemento.name}</p>
-                                <DeletarPlaylist idPlaylist={elemento.id} fecharCriarPlaylists={this.props.fecharCriarPlaylists} blur={this.props.blur} />
-                            </div>
-                        )
-                    }) : <p>Adicione uma playlist</p>}
-
-                </div>
-            </div>
+            <ContainerCardPlaylist onClick={this.props.fecharCriarPlaylists}>
+                {this.state.listaPlaylists.length ? this.state.listaPlaylists.map((elemento, id) => {
+                    imagemPlaylist = `https://picsum.photos/id/${id + 50}/200/300`
+                    return (
+                        <CardPlaylist key={id}>
+                            <CardImagem>
+                                <ImagemFundo src={imagemPlaylist} alt="Imagem Playlist" onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)} />
+                                <ImagemPlay onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)} src="https://www.pinclipart.com/picdir/big/217-2172073_free-music-icons-play-button-icon-minimalist-clipart.png" alt="Imagem do Play" />
+                                <p>{id + 1}</p>
+                                <h3 onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)}>{elemento.name}</h3>
+                            </CardImagem>
+                            <InfoPlaylist>
+                                <p onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)}>Playlist: {elemento.name}</p>
+                                <div>
+                                    <DeletarPlaylist idPlaylist={elemento.id} />
+                                </div>
+                            </InfoPlaylist>
+                        </CardPlaylist>
+                    )
+                }) : <p>Você pode adicionar playlists novas no menu acima.</p>}
+            </ContainerCardPlaylist>
         )
     }
 }

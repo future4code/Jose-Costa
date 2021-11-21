@@ -1,83 +1,21 @@
 import React from "react";
 import ListaMusicas from "./ListaMusicas";
-import AdicionarMusicas from "../Playlists/AdicionarMusicas";
+import AdicionarMusicas from "../Playlists/Musicas/AdicionarMusicas";
 
-import styled from "styled-components";
-
+import { ContainerExplorar, TituloContainer, ContainerBusca, ContainerPrincipalMusicas, ContainerMusicas, CardMusica, TituloMusica, TextoMostrarMusicas } from "./Styles/Style-Explorar";
 import { MdSearch } from "react-icons/md";
 import { MdPlayCircleFilled } from "react-icons/md";
-
-
-const ContainerExplorar = styled.div`
-
-`
-
-const TituloContainer = styled.h2`
-    color: white;
-    text-indent: 4vw;
-`
-
-const ContainerBusca = styled.div`
-    width: 97vw;
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-
-    input {
-        background-color: #1e1e1e;
-        border: none;
-        width: 20vw;
-        height: 5vh;
-        color: white;
-        outline: none;
-        padding: 1vh;
-        border-radius: 10px;
-    }
-`
-
-const ContainerPrincipalMusicas = styled.div`
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`
-
-const ContainerMusicas = styled.div`
-    width: 96vw;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-`
-
-const CardMusica = styled.div`
-    display: flex;
-    justify-content: space-around;
-    width: 30vw;
-    height: 10vh;
-    align-items: center;
-    text-indent: 0.5vw;
-    cursor: pointer;
-
-    p {
-        width: 20vw;
-        margin-right: 1vw;
-        color: gray;
-    }
-    p:hover {
-        color: white;
-    }
-    img {
-        height: 7vh;
-        border-radius: 50px;
-    }
-`
 
 class Explorar extends React.Component {
     state = {
         inputBusca: "",
-        abrirBusca: true,
+        abrirBusca: false,
+        numeroMenor: "",
+        numeroMaior: "",
+    }
+
+    componentDidMount = () => {
+        this.mostrarMenos();
     }
 
     enviarMusicaAtual = (musica, artista, url) => {
@@ -92,6 +30,22 @@ class Explorar extends React.Component {
         this.setState({ abrirBusca: !this.state.abrirBusca })
     }
 
+    mostrarTodas = () => {
+        this.setState({
+            numeroMenor: 0,
+            numeroMaior: 100,
+        })
+    }
+
+    mostrarMenos = () => {
+        const numeroMenor = Math.floor(Math.random() * 44)
+        const numeroMaior = numeroMenor + 16
+        this.setState({
+            numeroMenor: numeroMenor,
+            numeroMaior: numeroMaior,
+        })
+    }
+
     render() {
         let imagemMusica;
         return (
@@ -103,18 +57,22 @@ class Explorar extends React.Component {
                 </ContainerBusca>
 
                 <TituloContainer>Explore novidades:</TituloContainer>
-                <ContainerPrincipalMusicas>                 
+                <ContainerPrincipalMusicas>
                     <ContainerMusicas>
-                        {ListaMusicas.filter((elemento, id) => {
+                        {ListaMusicas.filter((elemento) => {
                             return elemento.nome.toLowerCase().includes(this.state.inputBusca.toLowerCase()) || elemento.artista.toLowerCase().includes(this.state.inputBusca.toLowerCase());
-                        }).filter((elemento, id) => {
-                            return id < 15;
+                        }).filter((elemento, id, array) => {
+                            if (this.state.inputBusca.length > 1) {
+                                return array;
+                            } else {
+                                return id > this.state.numeroMenor && id < this.state.numeroMaior;
+                            }
                         }).map((elemento, id) => {
-                            imagemMusica = `https://loremflickr.com/200/200/music?lock=${id + 1}`;
+                            imagemMusica = `https://loremflickr.com/200/200/music?lock=${id + this.state.numeroMenor}`;
                             return (
                                 <CardMusica>
                                     <img src={imagemMusica} alt="Imagem da Música" onClick={() => this.enviarMusicaAtual(elemento.nome, elemento.artista, elemento.url)} />
-                                    <p onClick={() => this.enviarMusicaAtual(elemento.nome, elemento.artista, elemento.url)}>{elemento.nome} - {elemento.artista}</p>
+                                    <TituloMusica onClick={() => this.enviarMusicaAtual(elemento.nome, elemento.artista, elemento.url)}>{elemento.nome} - {elemento.artista}</TituloMusica>
                                     <MdPlayCircleFilled onClick={() => this.enviarMusicaAtual(elemento.nome, elemento.artista, elemento.url)} />
                                     <AdicionarMusicas nome={elemento.nome} artista={elemento.artista} url={elemento.url} />
                                 </CardMusica>
@@ -122,6 +80,10 @@ class Explorar extends React.Component {
                         })
                         }
                     </ContainerMusicas>
+                    {this.state.numeroMenor !== 0 && <TextoMostrarMusicas onClick={this.mostrarTodas}> Ver todas as músicas »</TextoMostrarMusicas>}
+                    {this.state.numeroMenor === 0 && <TextoMostrarMusicas onClick={this.mostrarMenos}> Ver menos »</TextoMostrarMusicas>}
+                    <p></p>
+                    <p></p>
                 </ContainerPrincipalMusicas>
             </ContainerExplorar>
         )
