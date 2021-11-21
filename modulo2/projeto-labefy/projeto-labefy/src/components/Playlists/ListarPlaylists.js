@@ -43,9 +43,8 @@ class ListarPlaylists extends React.Component {
                         <CardPlaylist key={id}>
                             <CardImagem>
                                 <ImagemFundo src={imagemPlaylist} alt="Imagem Playlist" onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)} />
-                                <ImagemPlay onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)} src="https://www.pinclipart.com/picdir/big/217-2172073_free-music-icons-play-button-icon-minimalist-clipart.png" alt="Imagem do Play" />
-                                <p>{id + 1}</p>
-                                <h3 onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)}>{elemento.name}</h3>
+                                <ImagemPlay onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)} src="https://toppng.com/uploads/preview/white-play-icon-claims-adjuster-11553399850utg0lolmob.png" alt="Imagem do Play" />
+                                <span onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)}>{elemento.name}</span>
                             </CardImagem>
                             <InfoPlaylist>
                                 <p onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)}>Playlist: {elemento.name}</p>

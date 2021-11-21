@@ -86,8 +86,8 @@ class Inicio extends React.Component {
                                 <CardPlaylist key={id}>
                                     <CardImagem>
                                         <ImagemFundo src={imagemPlaylist} alt="Imagem Playlist" onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)} />
-                                        <h6 onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)}>{elemento.name}</h6>
-                                        <ImagemPlay onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)} src="https://www.pinclipart.com/picdir/big/217-2172073_free-music-icons-play-button-icon-minimalist-clipart.png" alt="Imagem do Play" />
+                                        <span onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)}>{elemento.name}</span>
+                                        <ImagemPlay onClick={() => this.props.exibirDetalhes(elemento.id, elemento.name, id)} src="https://toppng.com/uploads/preview/white-play-icon-claims-adjuster-11553399850utg0lolmob.png" alt="Imagem do Play" />
                                     </CardImagem>
 
                                 </CardPlaylist>

@@ -9,6 +9,6 @@
 http://jrvc-labefy.surge.sh/
 
 ### Imagens
-![image](https://user-images.githubusercontent.com/80327029/142766386-3bba9446-c1ef-40c1-8884-e9357f8ae252.png)
-![image](https://user-images.githubusercontent.com/80327029/142765767-a43dad3e-82ac-4e8b-b6b6-68b301ecfaaa.png)
-![image](https://user-images.githubusercontent.com/80327029/142765785-52ad9150-d704-4c90-b023-b12544d9dc50.png)
+![image](https://user-images.githubusercontent.com/80327029/142771062-b6b98051-1562-4474-9f1e-fde2806968e0.png)
+![image](https://user-images.githubusercontent.com/80327029/142771115-5607fd48-4e63-43f7-a6a4-61df2d8832e4.png)
+![image](https://user-images.githubusercontent.com/80327029/142771095-42956244-5f35-4d21-b4ff-7161d6619d7f.png)

@@ -95,14 +95,15 @@ export const CardImagem = styled.div`
      height: 5vw;
      cursor: pointer;
 
-    h6 {
-        width: 15vw;
+    span {
         position: absolute;
         color:  #030303;
-        margin: 1vw;
         font-size: 1rem;
         left: 0px;
         top: 5px;
+        font-weight: bold;
+        margin-left: 0.7vw;
+        text-shadow: 1px 1px white;
     }
 `
 
@@ -117,15 +118,10 @@ export const ImagemFundo = styled.img`
 export const ImagemPlay = styled.img`
     position: absolute;
     height: 4vh;
-    opacity: 30%;
     padding: 2px;
     border-radius: 60%;
     bottom: 0px;
     right: 0px;
-
-    &:hover {
-        opacity: 120%;
-    }
 `
 
 export const ContainerIrParaPlaylists = styled.div`

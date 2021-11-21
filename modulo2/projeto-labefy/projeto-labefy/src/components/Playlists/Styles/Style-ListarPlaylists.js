@@ -26,23 +26,13 @@ export const CardImagem = styled.div`
      height: 10vw;
      cursor: pointer;
 
-    h3 {
+    span {
         position: absolute;
         color:  #030303;
         margin: 1vw;
-        align-self: center;
-        align-items: center;
         font-size: 1.1rem;
-    }
-
-    p {
-        position: absolute;
-        padding: 0.2vw;
-        left: 2px;
-        background-color: #1e1e1e;
-        color: white;
-        opacity: 50%;
-        border-radius: 5px;
+        font-weight: bolder;
+        text-shadow: 1px 1px white;
     }
 `
 
@@ -57,15 +47,10 @@ export const ImagemFundo = styled.img`
 export const ImagemPlay = styled.img`
     position: absolute;
     height: 7vh;
-    opacity: 30%;
     bottom: 5px;
     right: 2px;
     padding: 2px;
     border-radius: 60%;
-
-    &:hover {
-        opacity: 120%;
-    }
 `
 
 export const InfoPlaylist = styled.div`

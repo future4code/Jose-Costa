@@ -15,10 +15,10 @@ class CriarPlaylists extends React.Component {
     }
 
     criarPlaylist = async () => {
-        if (this.state.inputNome.length > 21) {
+        if (this.state.inputNome.length > 44) {
             this.setState({ 
                 statusPlaylist: true,
-                statusMsg: "Máximo de caracteres: 22." })
+                statusMsg: "Máximo de caracteres: 45." })
         } else {
             this.setState({ statusMsg: "Adicionando..." })
             const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
