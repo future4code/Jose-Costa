@@ -13,9 +13,9 @@ function App() {
 
   const exibirTela = () => {
     if (sessionStorage.getItem('tela') === "inicio") {
-      return <TelaInicial pessoa={pessoa} selecionarPessoa={selecionarPessoa} />
+      return <TelaInicial pessoa={pessoa} selecionarPessoa={selecionarPessoa} alterarTela={alterarTela} />
     } else if (sessionStorage.getItem('tela') === "matches") {
-      return <TelaMatches />
+      return <TelaMatches alterarTela={alterarTela} />
     }
   }
 
@@ -33,10 +33,6 @@ function App() {
 
   return (
     <div>
-      <header>
-        <button onClick={() => alterarTela("inicio")}>Início</button>
-        <button onClick={() => alterarTela("matches")}>Matches</button>
-      </header>
       {exibirTela()}
     </div>
   );
