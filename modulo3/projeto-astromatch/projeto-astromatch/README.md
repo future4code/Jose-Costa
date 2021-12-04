@@ -7,7 +7,7 @@
 - Principais componentes: integração com API; alteração de telas; renderização e requisição de listas.
 
 ### Link Surge 
-http://jrvc-labefy.surge.sh/
+https://jrvc-astromatch.surge.sh/
 
 ### Imagens
 ![image](https://user-images.githubusercontent.com/80327029/144722247-0443e315-f5c2-41a2-979e-7e69adf379d8.png) ![image](https://user-images.githubusercontent.com/80327029/144722252-8e2c9c30-8f9a-4060-9f4f-52ce8d9f3469.png)
