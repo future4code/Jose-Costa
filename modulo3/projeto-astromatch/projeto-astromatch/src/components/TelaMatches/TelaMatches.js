@@ -1,44 +1,12 @@
 import { useState, useEffect } from "react";
 import { getMatches, clearMatches } from "../../services/Services";
-import styled from "styled-components";
-import { MdGroups, MdOutlineRestartAlt } from "react-icons/md"
-
-export const ConfirmaReset = styled.div`
-    width: 15vw;
-    height: 14vh;
-    background-color: gray;
-    position: fixed;
-    z-index: 2;
-    /* background-color: rgba(166, 164, 165, 0.5); */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-export const PopUp = styled.div`
-    padding: 0 1vw 1vw 1vw;
-    width: 25vw;
-    height: auto;
-    background-color: white;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 1px 5px 5px #030303;
-    p {
-        font-size: 0.9rem;
-    }
-`
-
+import { MdGroups, MdOutlineRestartAlt, MdDoneOutline, MdClose, MdOutlineSms } from "react-icons/md"
+import * as C from "./Style";
 
 const TelaMatches = (props) => {
     const [matches, setMatches] = useState([]);
     const [reset, setReset] = useState(false);
+    const [iniciarChat, setIniciarChat] = useState(false);
 
     useEffect(() => {
         listaMatches();
@@ -51,8 +19,30 @@ const TelaMatches = (props) => {
         })
     }
 
+    const confirmaChat = () => {
+        setIniciarChat(!iniciarChat);
+    }
+
     const listarMatches = matches.map((elemento, id) => {
-        return <p key={id}>{elemento.name}</p>
+        console.log(elemento)
+        return (
+            <C.CardMatches key={id}>
+                <div>
+                    <C.CardImagem imagem={elemento.photo} />
+                    <p><b>{elemento.name}</b></p>
+                </div>
+                <MdOutlineSms onClick={confirmaChat} />
+                {iniciarChat && <C.ConfirmaReset>
+                    <C.PopUp>
+                        <p>Deseja ir para o bate-papo?</p>
+                        <div>
+                            <a href="https://jrvc-whatslab.surge.sh/" target="_blank" rel="noreferrer"><MdDoneOutline onClick={confirmaChat}/></a>
+                            <MdClose onClick={confirmaChat} />
+                        </div>
+                    </C.PopUp>
+                </C.ConfirmaReset>}
+            </C.CardMatches>
+        )
     })
 
     const confirmaReset = () => {
@@ -67,17 +57,27 @@ const TelaMatches = (props) => {
     }
 
     return (
-        <div>Matches
-            <MdGroups onClick={() => props.alterarTela("inicio")} />
-            <MdOutlineRestartAlt onClick={confirmaReset} />
-            {listarMatches}
-            {reset && <ConfirmaReset>
-                <PopUp>
-                    <p>Confirma o reset?</p>
-                    <button onClick={resetarMatches}>Sim</button>
-                    <button onClick={confirmaReset}>Não</button>
-                </PopUp>
-            </ConfirmaReset>}
+        <div>
+            <C.Header>
+                <C.Logo><p>astro·<strong>match</strong></p><span>❤</span></C.Logo>
+                <C.Icones>
+                    <MdOutlineRestartAlt onClick={confirmaReset} />
+                    <MdGroups onClick={() => props.alterarTela("inicio")} />
+                </C.Icones>
+            </C.Header>
+            <C.ContainerMatch>
+                {listarMatches}
+            </C.ContainerMatch>
+
+            {reset && <C.ConfirmaReset>
+                <C.PopUp>
+                    <p>Confirma o reset de swipes e matches?</p>
+                    <div>
+                        <MdDoneOutline onClick={resetarMatches} />
+                        <MdClose onClick={confirmaReset} />
+                    </div>
+                </C.PopUp>
+            </C.ConfirmaReset>}
         </div>
     )
 }

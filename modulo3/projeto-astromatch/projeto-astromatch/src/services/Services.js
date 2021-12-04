@@ -36,7 +36,6 @@ export const choosePerson = async (id, escolha) => {
 export const clearMatches = async () => {
     try {
         const response = await axios.put(url + "clear")
-        console.log(response.data)
         return response.data
     } catch (err) {
         console.log(err)
