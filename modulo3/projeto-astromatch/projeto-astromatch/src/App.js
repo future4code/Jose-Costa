@@ -1,10 +1,26 @@
 import { useState, useEffect, React } from "react";
+import { GlobalStyle } from "./components/AppStyle";
 import TelaInicial from "./components/TelaInicial/TelaInicial"
 import TelaMatches from "./components/TelaMatches/TelaMatches";
 import { getProfileToChoose } from "./services/Services";
+import styled from "styled-components";
 
-function App() {
-  const [telaAtual, setTelaAtual] = useState("");
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const MainContainer = styled.div`
+  width: 360px;
+  height: 560px;
+  border: 1px solid gray;
+  border-radius: 5px;
+`
+const App = () => {
+  const [telaAtual, setTelaAtual] = useState("inicio");
   const [pessoa, setPessoa] = useState({});
 
   useEffect(() => {
@@ -12,10 +28,10 @@ function App() {
   }, []);
 
   const exibirTela = () => {
-    if (sessionStorage.getItem('tela') === "inicio") {
+    if (sessionStorage.getItem('tela') === "inicio" || telaAtual === "inicio") {
       return <TelaInicial pessoa={pessoa} selecionarPessoa={selecionarPessoa} alterarTela={alterarTela} />
     } else if (sessionStorage.getItem('tela') === "matches") {
-      return <TelaMatches alterarTela={alterarTela} />
+      return <TelaMatches selecionarPessoa={selecionarPessoa} alterarTela={alterarTela} />
     }
   }
 
@@ -33,7 +49,12 @@ function App() {
 
   return (
     <div>
-      {exibirTela()}
+      <GlobalStyle />
+      <Container>
+        <MainContainer>
+          {exibirTela()}
+        </MainContainer>
+      </Container>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getMatches, clearMatches } from "../../services/Services";
 import styled from "styled-components";
+import { MdGroups, MdOutlineRestartAlt } from "react-icons/md"
 
 export const ConfirmaReset = styled.div`
     width: 15vw;
@@ -8,11 +9,11 @@ export const ConfirmaReset = styled.div`
     background-color: gray;
     position: fixed;
     z-index: 2;
-    background-color: rgba(166, 164, 165, 0.5);
+    /* background-color: rgba(166, 164, 165, 0.5); */
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,8 +35,9 @@ export const PopUp = styled.div`
     }
 `
 
+
 const TelaMatches = (props) => {
-    const [matches, setMatches] = useState({ matches: [] });
+    const [matches, setMatches] = useState([]);
     const [reset, setReset] = useState(false);
 
     useEffect(() => {
@@ -44,11 +46,12 @@ const TelaMatches = (props) => {
 
     const listaMatches = () => {
         getMatches().then((res) => {
-            setMatches(res)
+            console.log(res.matches)
+            setMatches(res.matches || [""])
         })
     }
 
-    const listarMatches = matches.matches.map((elemento, id) => {
+    const listarMatches = matches.map((elemento, id) => {
         return <p key={id}>{elemento.name}</p>
     })
 
@@ -58,14 +61,15 @@ const TelaMatches = (props) => {
 
     const resetarMatches = () => {
         setReset(!reset);
-        setMatches({ matches: [] });
+        setMatches([]);
         clearMatches();
+        setTimeout(() => { props.selecionarPessoa() }, 2000);
     }
 
     return (
         <div>Matches
-            <button onClick={() => props.alterarTela("inicio")}>Voltar</button>
-            <button onClick={confirmaReset}>Reset</button>
+            <MdGroups onClick={() => props.alterarTela("inicio")} />
+            <MdOutlineRestartAlt onClick={confirmaReset} />
             {listarMatches}
             {reset && <ConfirmaReset>
                 <PopUp>

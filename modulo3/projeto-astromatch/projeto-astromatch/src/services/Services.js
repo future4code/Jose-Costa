@@ -7,7 +7,7 @@ export const getProfileToChoose = async () => {
         const response = await axios.get(url + "person")
         return response.data.profile
     } catch (err) {
-        console.log(err.message)
+        console.log(err)
     }
 }
 
@@ -16,7 +16,7 @@ export const getMatches = async () => {
         const response = await axios.get(url + "matches")
         return response.data
     } catch (err) {
-        console.log(err.message)
+        console.log(err)
     }
 }
 
@@ -29,7 +29,7 @@ export const choosePerson = async (id, escolha) => {
         const response = await axios.post(url + "choose-person", body)
         return response.data
     } catch (err) {
-        console.log(err.response.data)
+        console.log(err)
     }
 }
 
@@ -39,6 +39,6 @@ export const clearMatches = async () => {
         console.log(response.data)
         return response.data
     } catch (err) {
-        console.log(err.response.data)
+        console.log(err)
     }
 }
