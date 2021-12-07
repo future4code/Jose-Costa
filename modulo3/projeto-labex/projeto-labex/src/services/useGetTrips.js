@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../constants/url";
+import { url } from "../constants/url";
 
 export const useGetTrips = () => {
     const [trips, setTrips] = useState(undefined);
@@ -9,7 +9,7 @@ export const useGetTrips = () => {
 
     const getTrips = () => {
         setLoadingTrips(true);
-        axios.get(`${BASE_URL}/trips`)
+        axios.get(`${url}/trips`)
             .then((res) => {
                 setTrips(res.data.trips);
                 setLoadingTrips(false);
@@ -23,7 +23,7 @@ export const useGetTrips = () => {
 
     useEffect(() => {
         getTrips();
-    }, [BASE_URL]);
+    }, [url]);
 
     return [trips, loadingTrips, errorTrips];
 }
