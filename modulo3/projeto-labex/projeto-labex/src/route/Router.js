@@ -3,28 +3,32 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { GlobalStyle } from "../styles/GlobalStyle";
 import Home from "../pages/HomePage";
-import ListTripPages from "../pages/ListTripsPage";
+import ListTripPages from "../components/ListTripsPage";
 import ApplicationFromPage from "../pages/ApplicationFormPage";
 import LoginPage from "../pages/LoginPage";
 import AdminHomePage from "../pages/AdminHomePage";
 import CreateTripPage from "../pages/CreateTripPage";
 import TripDetailsPage from "../pages/TripDetailsPage";
+import Header from "../components/Header";
+import { useHistory } from "react-router-dom";
 
-const Router = () => {
+const Router = (props) => {
     return (
         <BrowserRouter>
             <GlobalStyle />
             <Switch>
 
                 <Route exact path="/">
+                    <Header />
                     <Home />
                 </Route>
 
                 <Route exact path="/trips/list">
+                <Header />
                     <ListTripPages />
                 </Route>
 
-                <Route exact path="/trips/application">
+                <Route exact path="/trips/application/:id">
                     <ApplicationFromPage />
                 </Route>
 
