@@ -4,7 +4,7 @@ import ApplicationForm from "./ApplicationForm";
 
 const TripDetails = (props) => {
     return (
-        <React.Fragment >
+        <React.Fragment>
             <SideSheet isShown={props.status.detalhes} onCloseComplete={() => props.exibirDetalhes(false, "")} containerProps={{ display: 'flex', flex: '1', flexDirection: 'column' }} >
 
                 <Pane zIndex={1} flexShrink={0} elevation={0} backgroundColor="#D6E0FF">

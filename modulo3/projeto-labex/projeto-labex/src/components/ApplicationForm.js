@@ -14,7 +14,7 @@ const ApplicationForm = (props) => {
         age: "",
         applicationText: "",
         profession: "",
-        country: "Brasil"
+        country: ""
     })
 
 
@@ -43,13 +43,14 @@ const ApplicationForm = (props) => {
     }
 
     return (
-        <Card backgroundColor="white" elevation={0} padding={10} display="flex" flexDirection="column" marginTop={16} >
+        <Card backgroundColor="white" elevation={0} padding={10} display="flex" flexDirection="column" marginTop={16}>
             <Heading margin={10}>Inscreva-se para a viagem:</Heading>
-            <form onSubmit={enviarCardastro}>
+            <form onSubmit={enviarCardastro} >
                 <TextInputField label="Nome" name={"name"} onChange={onChange} value={form.name} pattern={"^.{3,}"} title="Nome deve ter no mínimo 3 letras" required />
                 <TextInputField label="Idade" name={"age"} onChange={onChange} value={form.age} type="number" min={18} required />
                 <TextInputField label="Profissão" name={"profession"} onChange={onChange} value={form.profession} required />
                 <SelectField label="Nacionalidade" name={"country"} onChange={onChange} value={form.country} required>
+                <option value="" selected disabled>Selecione um país</option>
                     {Paises.map((pais, id) => {
                         return <option key={id} value={pais.nome}>{pais.nome}</option>
                     })}

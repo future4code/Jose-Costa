@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { url } from "../constants/url";
 
-export const useGetTrips = () => {
+export const useGetTrips = (primeiroState, segundoState) => {
     const [trips, setTrips] = useState(undefined);
     const [loadingTrips, setLoadingTrips] = useState(false);
     const [errorTrips, setErrorTrips] = useState("");
@@ -23,7 +23,7 @@ export const useGetTrips = () => {
 
     useEffect(() => {
         getTrips();
-    }, [url]);
+    }, [primeiroState, segundoState]);
 
     return [trips, loadingTrips, errorTrips];
 }
