@@ -1,7 +1,7 @@
 import { Pane, Dialog, toaster } from "evergreen-ui";
 import { useState } from "react";
 import axios from "axios";
-import { url } from "../constants/url";
+import { url } from "../../constants/url";
 
 const DeleteTrip = (props) => {
     const [statusEnviar, setStatusEnviar] = useState("");
@@ -21,7 +21,6 @@ const DeleteTrip = (props) => {
                 setButtonLoading(false);
                 props.abrirDeletar(false, "");
             }).catch(((err) => {
-                console.log(err)
                 setStatusEnviar("catch");
                 setStatusEnviar("");
                 setButtonLoading(false);

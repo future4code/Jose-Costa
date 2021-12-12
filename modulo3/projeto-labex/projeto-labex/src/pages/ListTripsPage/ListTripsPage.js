@@ -1,25 +1,33 @@
-import { useGetTrips } from "../hooks/useGetTrips";
+import { useGetTrips } from "../../hooks/useGetTrips";
 import { Pane, Spinner, Text, Table, Heading } from "evergreen-ui";
-import TripDetails from "../components/TripDetails";
+import TripDetails from "../../components/TripDetails/TripDetails";
 import { useState } from "react";
+import { corrigeData } from "../../constants/corrigeData";
+import { ContainerMobile } from "./styled-components";
 
 const ListTripPages = () => {
     const [trips, loadingTrips, errorTrips] = useGetTrips();
     const [status, setStatus] = useState({ detalhes: false, infos: "" });
     const [busca, setBusca] = useState("");
 
+    // Renderiza a lista de viagens na tela:
     const listaTrips = trips && trips.filter((elemento, id) => {
         return elemento.name.toUpperCase().includes(busca.toUpperCase());
     }).map((elemento, id) => {
         return (
             <Table.Row key={elemento.id} isSelectable onSelect={() => exibirDetalhes(true, elemento)}>
                 <Table.TextCell flex={7}>{elemento.name}</Table.TextCell>
-                <Table.TextCell>{elemento.planet}</Table.TextCell>
-                <Table.TextCell isNumber flexBasis={40}>{elemento.date}</Table.TextCell>
+                <ContainerMobile>
+                    <Table.TextCell>{elemento.planet}</Table.TextCell>
+                </ContainerMobile>
+                <ContainerMobile>
+                    <Table.TextCell isNumber flexBasis={40}> {corrigeData(elemento.date)} </Table.TextCell>
+                </ContainerMobile>
             </Table.Row>
         )
     });
 
+    // Função para acionar(true ou false) o popup de exibir os detalhes da viagem;
     const exibirDetalhes = (status, info) => {
         setStatus({ detalhes: status, infos: info })
     }
@@ -40,9 +48,14 @@ const ListTripPages = () => {
                     {!loadingTrips && trips && trips.length > 0 && listaTrips &&
                         <Table width="55vw">
                             <Table.Head>
+
                                 <Table.SearchHeaderCell onChange={(value) => setBusca(value)} placeholder="Busca" flex={7} />
-                                <Table.TextHeaderCell>Destino</Table.TextHeaderCell>
-                                <Table.TextHeaderCell>Data</Table.TextHeaderCell>
+                                <ContainerMobile>
+                                    <Table.TextHeaderCell>Destino</Table.TextHeaderCell>
+                                </ContainerMobile>
+                                <ContainerMobile>
+                                    <Table.TextHeaderCell>Data</Table.TextHeaderCell>
+                                </ContainerMobile>
                             </Table.Head>
                             <Table.VirtualBody height={48 * trips.length}>
                                 {listaTrips}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useForm } from "../hooks/useForm";
+import { useForm } from "../../hooks/useForm";
 import { Pane, TextInputField, Heading, Card, Button, toaster } from "evergreen-ui";
 
 const LoginPage = () => {
@@ -12,7 +12,8 @@ const LoginPage = () => {
         email: "",
         password: "",
     })
-
+  
+    // Requisição: envia as informações do usuário para API verificar autenticação.
     const onSubmitLogin = (e) => {
         e.preventDefault();
         const body = {

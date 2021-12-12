@@ -8,7 +8,6 @@ export const useProtectPage = () => {
         const token = localStorage.getItem("token");
 
         if (token === null) {
-            console.log("Não está logado. Redirecionando para o Login...")
             history.push("/login")
         }
 

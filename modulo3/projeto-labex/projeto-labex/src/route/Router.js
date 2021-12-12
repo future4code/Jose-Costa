@@ -1,13 +1,15 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Heading, Paragraph } from "evergreen-ui";
+import { GlobalStyle } from "../App-style/GlobalStyle";
 
-import { GlobalStyle } from "../styles/GlobalStyle";
-import Home from "../pages/HomePage";
-import ListTripPages from "../pages/ListTripsPage";
-import LoginPage from "../pages/LoginPage";
-import AdminHomePage from "../pages/AdminHomePage";
-import TripDetailsPage from "../pages/TripDetailsPage";
-import Header from "../components/Header";
+import AdminHomePage from "../pages/AdminHomePage/AdminHomePage";
+import Home from "../pages/HomePage/HomePage";
+import ListTripPages from "../pages/ListTripsPage/ListTripsPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
+
+import TripDetailsPage from "../pages/TripDetailsPage/TripDetailsPage";
+import Header from "../components/Header/Header";
 
 const Router = () => {
     return (
@@ -37,7 +39,8 @@ const Router = () => {
                 </Route>
 
                 <Route exact path="">
-                    <p>Página inexistente.</p>
+                    <Heading textAlign="center" margin={10}>Página inexistente.</Heading>
+                    <Paragraph textAlign="center" >Verifique sua digitação e tente novamente. :)</Paragraph>
                 </Route>
 
             </Switch>
