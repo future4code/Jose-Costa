@@ -1,19 +1,19 @@
 export const irHome = (navigate) => {
-    navigate("/")
+    navigate("/");
 }
 
 export const irCadastro = (navigate) => {
     navigate("/cadastro")
 }
 
-export const irLogin = () => {
-    navigate("/login")
+export const irLogin = (navigate) => {
+    navigate("/login");
 }
 
-export const irFeed = () => {
-    navigate("/feed")
+export const irFeed = (navigate) => {
+    navigate("/feed");
 }
 
 export const irPosts = (navigate, id) => {
-    navigate(`/post/${id}`)
+    navigate(`/post/${id}`);
 }
