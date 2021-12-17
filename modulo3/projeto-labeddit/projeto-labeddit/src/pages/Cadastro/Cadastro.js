@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { irLogin } from "../../routes/cordinator";
 import * as S from "../../constants/styled";
-import LabeTitulo from "../../components/Titulo/Titulo";
+import LabeTitulo from "../../components/LabeTitulo/LabeTitulo";
 import { Typography } from "antd";
 import FormCadastro from "./FormCadastro";
 

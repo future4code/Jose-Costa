@@ -5,11 +5,14 @@ import ImagemHome from "../../assets/Comunidade.png"
 import * as S from "../../constants/styled";
 import * as C from "./styled";
 import { irLogin, irCadastro } from "../../routes/cordinator";
+import useAuth from "../../hooks/useAuth";
 
 import { Button, Typography } from 'antd';
 
 const HomePage = () => {
     const navigate = useNavigate();
+    
+    useAuth();
 
     return (
         <S.Container>

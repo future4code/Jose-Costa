@@ -20,8 +20,8 @@ export const Container = styled.div`
 
 export const Main = styled.div`
     width: 500px;
-    border-left: 1px solid #dbdbdb;
-    border-right: 1px solid #dbdbdb;
+    /* border-left: 1px solid gray;
+    border-right: 1px solid gray; */
 `
 
 export const MainContainer1 = styled.div`
@@ -44,4 +44,21 @@ export const MainContainer2 = styled.div`
 export const Link = styled.span`
     cursor: pointer;
     font-style: italic;
+`
+
+export const Card = styled.div`
+    width: 100%;
+    border: 1px solid #dadada;
+    padding: 10px;
+`
+
+export const CardBottom = styled.div`
+    width: 100%;
+    border-bottom: 1px solid #dadada;
+    border-left: 1px solid #dadada;
+    border-right: 1px solid #dadada;
+    padding: 10px;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 50px;
 `

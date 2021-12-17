@@ -7,4 +7,8 @@ export const Destaque = styled.div`
     color: white;
     background-color: #787171;
 }
+
+    h1 {
+        margin-bottom: 0;
+    }
 `

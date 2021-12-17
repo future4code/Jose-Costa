@@ -3,35 +3,29 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import { Form, Input, Button } from "antd";
-import { cadastro } from "../../services/acesso";
+import { login } from "../../services/acesso";
 
-const FormCadastro = () => {
+const FormLogin = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [form, onChange, clear] = useForm({
-        username: "",
         email: "",
         password: ""
     });
 
-    const enviarCadastro = (event) => {
+    const enviarLogin = (event) => {
         event.preventDefault();
         const body = {
-            username: form.username,
             email: form.email,
             password: form.password
         }
-        cadastro(body, clear, navigate, setLoading);
+        login(body, clear, navigate, setLoading);
     };
 
     return (
         <div>
-            <form onSubmit={enviarCadastro}>
-                <Form.Item label="Nome">
-                    <Input name="username" value={form.username} onChange={onChange} required />
-                </Form.Item>
-
-                <Form.Item label="E-mail">
+            <form onSubmit={enviarLogin}>
+                               <Form.Item label="E-mail">
                     <Input name="email" value={form.email} onChange={onChange} type="email" required />
                 </Form.Item>
 
@@ -40,11 +34,11 @@ const FormCadastro = () => {
                 </Form.Item>
 
                 <Button type="primary" htmlType="submit" loading={loading}>
-                    Cadastrar
+                    Entrar
                 </Button>
             </form>
         </div>
     );
 };
 
-export default FormCadastro;
+export default FormLogin;
