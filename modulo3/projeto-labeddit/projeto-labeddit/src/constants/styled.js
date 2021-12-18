@@ -12,10 +12,11 @@ export const Centralizado = styled.div`
 `
 
 export const Container = styled.div`
-    width: 100vw;
+    max-width: 100vw;
     min-height: 100vh; 
     display: flex;
     justify-content: center;
+    background-color: #fcfcfc;
 `
 
 export const Main = styled.div`
@@ -47,12 +48,14 @@ export const Link = styled.span`
 `
 
 export const Card = styled.div`
+    background-color: white;
     width: 100%;
     border: 1px solid #dadada;
     padding: 10px;
 `
 
 export const CardBottom = styled.div`
+    background-color: white;
     width: 100%;
     border-bottom: 1px solid #dadada;
     border-left: 1px solid #dadada;
@@ -60,5 +63,13 @@ export const CardBottom = styled.div`
     padding: 10px;
     display: flex;
     justify-content: end;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+`
+
+export const Loading = styled.div`
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
