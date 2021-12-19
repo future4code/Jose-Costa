@@ -21,8 +21,7 @@ export const Container = styled.div`
 
 export const Main = styled.div`
     width: 500px;
-    /* border-left: 1px solid gray;
-    border-right: 1px solid gray; */
+    max-width: 500px;
 `
 
 export const MainContainer1 = styled.div`
@@ -52,6 +51,7 @@ export const Card = styled.div`
     width: 100%;
     border: 1px solid #dadada;
     padding: 10px;
+    max-width: 500px;
 `
 
 export const CardBottom = styled.div`
@@ -64,12 +64,4 @@ export const CardBottom = styled.div`
     display: flex;
     justify-content: end;
     margin-bottom: 30px;
-`
-
-export const Loading = styled.div`
-    width: 100%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 `

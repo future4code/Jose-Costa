@@ -1,15 +1,15 @@
 import { Destaque } from "./styled";
-import { irHome } from "../../routes/cordinator";
+import { irFeed } from "../../routes/cordinator";
 import { useNavigate } from "react-router-dom";
 
-const LabeTitulo = () => {
+const LabeTituloHeader = () => {
     const navigate = useNavigate();
     
     return (
-        <Destaque onClick={() => irHome(navigate)}>
+        <Destaque onClick={() => irFeed(navigate)}>
             <h1>Lab<span>E</span>.</h1>
         </Destaque>
     )
 }
 
-export default LabeTitulo;
+export default LabeTituloHeader;

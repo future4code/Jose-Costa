@@ -1,13 +1,14 @@
 import React from "react";
-import Router from "./routes/Router";
 import "./App.less";
+import Router from "./routes/Router";
+import { ConfigProvider } from 'antd';
+import ptBR from 'antd/lib/locale/pt_BR';
 
 const App = () => {
-
   return (
-    <div>
+    <ConfigProvider locale={ptBR}>
       <Router />
-    </div>
+    </ConfigProvider>
   )
 }
 

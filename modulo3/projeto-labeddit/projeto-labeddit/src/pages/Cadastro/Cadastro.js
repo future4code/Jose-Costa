@@ -8,7 +8,6 @@ import FormCadastro from "./FormCadastro";
 
 const Cadastro = () => {
     const navigate = useNavigate();
-
     return (
         <S.Container>
             <S.Main>
@@ -20,7 +19,6 @@ const Cadastro = () => {
                         <Typography.Title level={5}>Crie sua conta ou faça o <S.Link onClick={() => irLogin(navigate)}>login</S.Link>.</Typography.Title>
                         <FormCadastro />
                     </S.Centralizado>
-
                 </S.MainContainer2>
             </S.Main>
         </S.Container>

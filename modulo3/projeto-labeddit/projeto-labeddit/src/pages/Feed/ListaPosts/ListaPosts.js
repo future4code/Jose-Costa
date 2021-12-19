@@ -1,14 +1,15 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as S from "../../../constants/styled";
 import * as C from "./styled"
 import useRequestPost from "../../../hooks/useRequestPost";
 import DadosPosts from "../../../components/DadosPosts/DadosPost";
-import { UserOutlined, LoadingOutlined } from "@ant-design/icons";
-import { Divider, Typography, Spin, Pagination } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { Typography, Pagination, Tooltip } from "antd";
 import { verificarData, verificarHora } from "../../../constants/verificarDataHora";
-
-const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+import Loading from "../../../components/Loading/Loading";
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 const ListaPosts = (props) => {
     const token = localStorage.getItem('token');
@@ -16,8 +17,8 @@ const ListaPosts = (props) => {
     const [posts, loading] = useRequestPost(token, props.atualizar, pagina);
 
     const onChange = (page) => {
-        setPagina(page)
-        window.scrollTo(0, 0)
+        setPagina(page);
+        window.scrollTo(0, 0);
     }
 
     const listarPosts = posts.length > 0 && posts.map((item, id) => {
@@ -30,9 +31,9 @@ const ListaPosts = (props) => {
                             {item.username}
                         </Typography.Text>
                         <div style={{ fontSize: "12px" }}>
-                            <Typography.Text> {verificarHora(item.createdAt)} </Typography.Text>
-                            <Divider type="vertical" />
-                            <Typography.Text> {verificarData(item.createdAt)} </Typography.Text>
+                            <Tooltip title={`${verificarHora(item.createdAt)} ${verificarData(item.createdAt)}`}>
+                                <span>{(moment(item.createdAt).fromNow())}</span>
+                            </Tooltip>
                         </div>
                     </C.PostHeader>
                     <C.Divisao>
@@ -41,17 +42,13 @@ const ListaPosts = (props) => {
                     <p>{item.body}</p>
                 </C.PostInfo >
             </S.Card>
-            <DadosPosts item={item} />
-        </div >
+            <DadosPosts item={item} atualizar={props.atualizar} />
+        </div>
     })
 
     return (
         <>
-            {loading === true &&
-                <S.Loading>
-                    <Spin indicator={antIcon} />
-                </S.Loading>
-            }
+            {loading === true && <Loading />}
             {posts && listarPosts}
 
             {loading !== true && (
@@ -59,7 +56,6 @@ const ListaPosts = (props) => {
                     <Pagination current={pagina} onChange={onChange} total={50} size="small" />
                 </C.Paginas>
             )}
-
         </>
     )
 }

@@ -1,4 +1,4 @@
-import { notification, message } from "antd";
+import { message } from "antd";
 
 export const enviarNotificacao = (type, msg) => {
   if (type === "sucess") {
@@ -9,9 +9,3 @@ export const enviarNotificacao = (type, msg) => {
     message.warning(msg);
   }
 }
-// Outra opção:
-// notification[type]({
-//   message: msg,
-//   description: desc,
-// });
-// };

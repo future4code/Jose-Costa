@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/url";
-import { irHome } from "../routes/cordinator";
+import { irLogin } from "../routes/cordinator";
 import { useNavigate } from "react-router-dom";
 
-const useRequestPost = (token, atualizar, pagina) => {
+const useRequestPostList = (token) => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState({});
     const [loading, setLoading] = useState(false);
 
     const params = {
-        page: pagina,
-        size: 6
+        page: 1,
+        size: 100
     }
 
     useEffect(() => {
@@ -26,12 +26,11 @@ const useRequestPost = (token, atualizar, pagina) => {
             setLoading(res.data);
         }).catch((err) => {
              setLoading(false);
-             localStorage.removeItem("token");
-             irHome(navigate);   
+            irLogin(navigate);
         });
-     }, [atualizar, pagina])
+     }, [])
 
      return [posts, loading]
     }
 
-export default useRequestPost;
+export default useRequestPostList;
