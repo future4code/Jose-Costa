@@ -17,11 +17,14 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     background-color: #fcfcfc;
+
 `
 
 export const Main = styled.div`
     width: 500px;
-    max-width: 500px;
+
+    @media (max-width: 600px) {
+         width: 100vw; 
 `
 
 export const MainContainer1 = styled.div`
