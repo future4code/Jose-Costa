@@ -1,0 +1,12 @@
+[
+	{
+		"nome": "Pizza de Calabresa",
+		"custo": 20,
+		"valor": 35,
+		"ingredientes": [
+			"Muçarela",
+			"Calabresa",
+			"Cebola"
+		]
+	}
+]
