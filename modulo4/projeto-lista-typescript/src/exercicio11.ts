@@ -18,7 +18,7 @@ const listaRomanos: Romanos[] = [
     { letra: "I", valor: 1 }
 ]
 
-const converterParaRomanos = (numero: number) => {
+const converterParaRomanos = (numero: number): string => {
     let numeroDecimal: number = numero;
     let numeroRomano: string[] = [];
     listaRomanos.forEach((romano) => {
