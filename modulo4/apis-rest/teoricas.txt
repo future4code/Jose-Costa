@@ -1,0 +1,12 @@
+Respostas:
+
+1) a) O método HTTP utilizado foi o GET pois a resposta da requisição é uma lista de dados para leitura.
+b) Entendidade utilizada foi a "/users".
+
+2)a) O método foi passado via path params por se tratar de uma identificação de categoria dos usuários. 
+b) A forma de garantir que apenas os types válidos sejam utilizados pode ser criando uma condição que restringe a entrada de alguma informação diferente dos types pré-selecionados.
+
+3) a) Nesse caso podemos utilizar o query params por se tratar de uma busca.
+
+4) a) Alterando para o método PUT a funcionalidade da requisição continua da mesma forma que o POST.
+b) Para requisições desse tipo acho melhor utilizar o POST pois se trata de uma criação. O método PUT seria ideal em caso de alteração de dados.
