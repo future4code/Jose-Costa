@@ -1,0 +1,22 @@
+[
+	{
+		"id": 1,
+		"name": "Chuteira Mercurial Vapor III",
+		"price": 1000
+	},
+	{
+		"id": 2,
+		"name": "Chuteira Adidas F50",
+		"price": 700
+	},
+	{
+		"id": 3,
+		"name": "Chuteira Nike Magista III",
+		"price": 1000
+	},
+	{
+		"id": 4,
+		"name": "Chuteira Umbro IV",
+		"price": 670
+	}
+]
