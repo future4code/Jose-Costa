@@ -1,0 +1,28 @@
+[
+	{
+		"name": "",
+		"cpf": "",
+		"birthDate": "",
+		"accountBalance": 0,
+		"bankStatement": [
+			{
+				"value": 0,
+				"date": "",
+				"desc": ""
+			}
+		]
+	},
+	{
+		"name": "José Rodolfo",
+		"cpf": "145.382.206-20",
+		"birthDate": "1991-12-11T03:00:00.000Z",
+		"accountBalance": 0,
+		"bankStatement": [
+			{
+				"value": 0,
+				"date": "2022-01-28T23:11:12.224Z",
+				"desc": "Abertura de conta"
+			}
+		]
+	}
+]
