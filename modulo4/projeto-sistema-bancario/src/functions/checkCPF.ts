@@ -20,7 +20,7 @@ const validateCPF = (cpf: string): boolean => {
     return result;
 }
 
-const checkDuplicateCPF = (cpf: string): boolean => {
+export const checkDuplicateCPF = (cpf: string): boolean => {
     let thirdCheck: boolean = false;
         for (let i = 0; i < data.length; i++) {
             if (data[i].cpf === cpf) {

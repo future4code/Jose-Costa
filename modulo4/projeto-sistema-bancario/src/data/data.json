@@ -13,15 +13,58 @@
 		]
 	},
 	{
-		"name": "José Rodolfo",
+		"name": "Quintino",
 		"cpf": "145.382.206-20",
-		"birthDate": "1991-12-11T03:00:00.000Z",
-		"accountBalance": 0,
+		"birthDate": "1991-12-04T03:00:00.000Z",
+		"accountBalance": 10,
 		"bankStatement": [
 			{
 				"value": 0,
-				"date": "2022-01-28T23:11:12.224Z",
+				"date": "2022-01-29T17:59:35.065Z",
 				"desc": "Abertura de conta"
+			},
+			{
+				"value": 10,
+				"date": "2022-01-30T11:43:59.533Z",
+				"desc": "Depósito de dinheiro"
+			},
+			{
+				"value": 20,
+				"date": "2022-01-30T12:09:16.422Z",
+				"desc": "Transferência recebida de Marinês"
+			}
+		]
+	},
+	{
+		"name": "Marinês",
+		"cpf": "712.533.226-94",
+		"birthDate": "1991-02-28T03:00:00.000Z",
+		"accountBalance": 200,
+		"bankStatement": [
+			{
+				"value": 0,
+				"date": "2022-01-30T12:04:02.435Z",
+				"desc": "Abertura de conta"
+			},
+			{
+				"value": 200,
+				"date": "2022-01-30T12:05:13.957Z",
+				"desc": "Depósito de dinheiro"
+			},
+			{
+				"value": -120,
+				"date": "2022-01-31T03:00:00.000Z",
+				"desc": "Agendamento: Conta de energia"
+			},
+			{
+				"value": -120,
+				"date": "2022-01-31T03:00:00.000Z",
+				"desc": "Agendamento: Conta de energia"
+			},
+			{
+				"value": -20,
+				"date": "2022-01-30T12:09:16.422Z",
+				"desc": "Transferência enviada para Quintino"
 			}
 		]
 	}

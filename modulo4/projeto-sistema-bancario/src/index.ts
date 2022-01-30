@@ -2,9 +2,10 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
 import data from "./data/data.json";
-import { checkAge } from "./functions/checkDate";
+import { checkAge, compareDates } from "./functions/checkDate";
 import { checkCPF } from "./functions/checkCPF";
 import { Account } from "./functions/types";
+import { verifyAccount, getAccountInfo, updateAccount, addBankStat, addBalance, remBalance } from "./functions/accountInfos";
 
 const fs = require("fs");
 const app = express();
@@ -24,6 +25,29 @@ const server = app.listen(process.env.PORT || 3003, () => {
     }
 });
 
+// Retorna todas as informações da conta.
+app.get("/account/", (req: Request, res: Response) => {
+    let errorCode: number = 500;
+    try {
+        const body = req.body;
+        if (!body.cpf || !body.name) {
+            errorCode = 422;
+            throw new Error("Erro na requisição: parâmetros insuficientes.")
+        } if (!verifyAccount(body.cpf, body.name)) {
+            errorCode = 401;
+            throw new Error("Erro na requisição: dados inválidos.")
+        } else {
+            const accountInfo = getAccountInfo(body.cpf);
+            if (accountInfo) {
+                res.status(200).send(accountInfo);
+            }
+        }
+    } catch (err: any) {
+        res.status(errorCode).send({ message: err.message || error500 })
+    }
+});
+
+// Cria conta no banco.
 app.post("/account", (req: Request, res: Response) => {
     let errorCode: number = 500;
     try {
@@ -35,7 +59,7 @@ app.post("/account", (req: Request, res: Response) => {
         const ageInfo = checkAge(body.birthDate);
         if (!ageInfo) {
             errorCode = 403;
-            throw new Error("Erro na requisição: idade mínima(18), formato da data de nascimento: 'DD/MM/AAAA'");
+            throw new Error("Erro na requisição: idade mínima(18), formato da data de nascimento: 'AAAA-MM-DD' (ISO 8601)");
         }
         const validateCPF = checkCPF(body.cpf);
         if (validateCPF) {
@@ -53,7 +77,7 @@ app.post("/account", (req: Request, res: Response) => {
             };
             const newData: Account[] = data;
             newData.push(newAccount);
-            res.status(200).send({ message: "Conta criada com sucesso"} );
+            res.status(200).send({ message: "Conta criada com sucesso" });
             fs.writeFileSync('src/data/data.json', JSON.stringify(newData, null, '\t'));
         }
     } catch (err: any) {
@@ -61,6 +85,132 @@ app.post("/account", (req: Request, res: Response) => {
     }
 });
 
-app.get("/test", (req, res) => {
-    res.status(200).send("ae")
+// Pagamento e agendamento de contas.
+app.post("/account/paybill", (req: Request, res: Response) => {
+    let errorCode: number = 500;
+    try {
+        const body = req.body;
+        if (!body.value || !body.desc) {
+            errorCode = 422;
+            throw new Error("Erro na requisição: parâmetros insuficientes.")
+        } if (!verifyAccount(body.cpf, body.name)) {
+            errorCode = 401;
+            throw new Error("Erro na requisição: dados inválidos.")
+        }
+        const valueToPay = Number(req.body.value);
+        if (!Number.isInteger(valueToPay) || Number(valueToPay) < 0) {
+            errorCode = 422;
+            throw new Error("Erro na requisição: verifique o valor informado.")
+        }
+        const accountInfo = getAccountInfo(body.cpf);
+        if (accountInfo && accountInfo.accountBalance < valueToPay) {
+            errorCode = 422;
+            throw new Error("Saldo insuficiente.");
+        }
+        let payday;
+        if (!body.date) {
+            payday = { payday: new Date() }
+            const newAccountBalance = remBalance(body.cpf, valueToPay);
+            if (newAccountBalance || newAccountBalance === 0) {
+                addBankStat(body.cpf, valueToPay * -1, payday.payday, body.desc);
+                res.status(200).send({ accountBalance: newAccountBalance });
+            }
+        } else if (body.date) {
+            payday = compareDates(body.date);
+            if (payday.date === "Invalid Date") {
+                errorCode = 403;
+                throw new Error("Erro na requisição: data de pagamento inválida. Escolha uma data futura e utilize este formato: 'AAAA-MM-DD' (ISO 8601)");
+            } else {
+                if ((payday.date.getMonth() === new Date().getMonth() && payday.date.getDate() === new Date().getDate() && payday.date.getFullYear() === new Date().getFullYear())) {
+                    const newAccountBalance = remBalance(body.cpf, valueToPay);
+                    addBankStat(body.cpf, valueToPay * -1, payday.date, body.desc);
+                    res.status(200).send({ accountBalance: newAccountBalance });
+                } else if (accountInfo && accountInfo.accountBalance >= valueToPay) {
+                    addBankStat(body.cpf, valueToPay * -1, payday.date, `Agendamento: ${body.desc}`);
+                    res.status(200).send({ message: "Pagamento agendado com sucesso!" });
+                }
+            }
+        }
+    } catch (err: any) {
+        res.status(errorCode).send({ message: err.message || error500 })
+    }
+});
+
+// Transferência entre contas.
+app.post("/account/transfer", (req: Request, res: Response) => {
+    let errorCode = 500;
+    try {
+        const body = req.body;
+        const value = Number(req.body.value);
+        if (!body.cpf || !body.name || !body.receiverName || !body.receiverCpf || !body.value) {
+            errorCode = 422;
+            throw new Error("Erro na requisição: parâmetros insuficientes.")
+        } if (!verifyAccount(body.cpf, body.name) || !verifyAccount(body.receiverCpf, body.receiverName)) {
+            errorCode = 401;
+            throw new Error("Erro na requisição: dados inválidos.")
+        }
+        if (!Number.isInteger(value) || Number(value) < 0) {
+            errorCode = 422;
+            throw new Error("Erro na requisição: verifique o valor informado.")
+        }
+        const accountInfo = getAccountInfo(body.cpf);
+        if (accountInfo && accountInfo.accountBalance < value) {
+            errorCode = 422;
+            throw new Error("Saldo insuficiente.");
+        }
+        addBankStat(body.cpf, value * -1, new Date(), `Transferência enviada para ${body.receiverName}`);
+        addBankStat(body.receiverCpf, value, new Date(), `Transferência recebida de ${body.name}`);
+        res.status(200).send({ message: "Transferência enviada com sucesso!" })
+    } catch (err: any) {
+        res.status(errorCode).send({ message: err.message || error500 })
+    }
 })
+
+// Adiciona saldo a uma conta.
+app.put("/account/balance", (req: Request, res: Response) => {
+    let errorCode: number = 500;
+    try {
+        const body = req.body;
+        if (!body.cpf || !body.name || !body.value) {
+            errorCode = 422;
+            throw new Error("Erro na requisição: parâmetros insuficientes.")
+        } if (!verifyAccount(body.cpf, body.name)) {
+            errorCode = 401;
+            throw new Error("Erro na requisição: dados inválidos.")
+        }
+        const valueAdd = Number(req.body.value);
+        if (!Number.isInteger(valueAdd) || Number(valueAdd) < 0) {
+            errorCode = 422;
+            throw new Error("Erro na requisição: verifique o valor informado.")
+        } else {
+            const newAccountBalance = addBalance(body.cpf, valueAdd);
+            res.status(200).send({ accountBalance: newAccountBalance });
+            addBankStat(body.cpf, valueAdd, new Date(), "Depósito de dinheiro");
+        }
+    } catch (err: any) {
+        res.status(errorCode).send({ message: err.message || error500 })
+    }
+});
+
+// Atualiza o saldo de acordo com o extrato e a data atual.
+app.put("/account/update", (req: Request, res: Response) => {
+    let errorCode: number = 500;
+    try {
+        const body = req.body;
+        if (!body.cpf || !body.name) {
+            errorCode = 422;
+            throw new Error("Erro na requisição: parâmetros insuficientes.")
+        } if (!verifyAccount(body.cpf, body.name)) {
+            errorCode = 401;
+            throw new Error("Erro na requisição: dados inválidos.")
+        } else {
+            const accountInfo = updateAccount(body.cpf);
+            if (accountInfo) {
+                res.status(200).send({ accountBalance: accountInfo.accountBalance });
+            }
+        }
+    } catch (err: any) {
+        res.status(errorCode).send({ message: err.message || error500 })
+    }
+});
+
