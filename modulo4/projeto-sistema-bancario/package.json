@@ -1,15 +1,15 @@
 {
   "name": "projeto-sistema-bancario",
   "version": "1.0.0",
-  "description": "",
+  "description": "LabeBank API",
   "main": "index.js",
   "scripts": {
     "start:dev": "ts-node-dev ./src/index.ts",
     "start": "tsc && node ./build/index.js",
     "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["backend", "labebank"],
+  "author": "José Rodolfo",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.12",
