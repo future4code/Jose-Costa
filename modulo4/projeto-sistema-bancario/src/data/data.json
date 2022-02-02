@@ -1,0 +1,46 @@
+[
+	{
+		"name": "",
+		"cpf": "",
+		"birthDate": "",
+		"accountBalance": 0,
+		"bankStatement": [
+			{
+				"value": 0,
+				"date": "",
+				"desc": ""
+			}
+		]
+	},
+	{
+		"name": "Quintino",
+		"cpf": "145.382.206-20",
+		"birthDate": "1991-12-04T03:00:00.000Z",
+		"accountBalance": 10,
+		"bankStatement": [
+			{
+				"value": 0,
+				"date": "2022-01-29T17:59:35.065Z",
+				"desc": "Abertura de conta"
+			},
+			{
+				"value": 10,
+				"date": "2022-01-30T11:43:59.533Z",
+				"desc": "Depósito de dinheiro"
+			}
+		]
+	},
+	{
+		"name": "Marinês",
+		"cpf": "712.533.226-94",
+		"birthDate": "1991-02-28T03:00:00.000Z",
+		"accountBalance": 0,
+		"bankStatement": [
+			{
+				"value": 0,
+				"date": "2022-01-30T12:04:02.435Z",
+				"desc": "Abertura de conta"
+			}
+		]
+	}
+]
