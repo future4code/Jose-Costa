@@ -1,15 +1,20 @@
 import express, { Request, Response } from "express";
 import { AddressInfo } from "net";
 import cors from "cors";
-import connection from "./connection";
-import { getUserController } from "./controllers/userController";
+import { createUser } from "./controllers/usersControllers/createUser";
+import { getUser } from "./controllers/usersControllers/getUser";
+import { editUser } from "./controllers/usersControllers/editUser";
+import { createTask } from "./controllers/tasksControllers/createTask";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.get("/user", getUserController);
+app.post("/user", createUser);
+app.get("/user/:id", getUser);
+app.put("/user/edit/:id", editUser);
+app.post("/task", createTask);
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
