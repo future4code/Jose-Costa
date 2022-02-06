@@ -1,4 +1,4 @@
-### API: LabeBank
+### To Do List API
 
 ### Descrição
 - API que gerencia uma lista de tarefas e usuários integrada ao banco de dados MySQL.
