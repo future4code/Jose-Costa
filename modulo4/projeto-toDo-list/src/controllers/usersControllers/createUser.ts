@@ -31,7 +31,7 @@ export const createUser = async (req: Request, res: Response) => {
             email
         }
         await connection("Users").insert(newUser);
-        res.send({ message: "Conta criadad com sucesso!" });
+        res.send({ message: "Conta criada com sucesso!" });
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message })
     }
