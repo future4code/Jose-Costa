@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import connection from "../../connection";
 import { Task } from "../../models/Tasks";
 import { User } from "../../models/Users";
 import validator from "validator";
@@ -14,18 +15,18 @@ export const createTask = async (req: Request, res: Response) => {
             errorCode = 422;
             throw new Error("Erro: Parâmetros insuficientes.")
         }
+        if (typeof title !== "string" || typeof description !== "string") {
+            errorCode = 422;
+            throw new Error("Erro: parâmetros inválidos.");
+        }
         if (await User.checkExistence({ user_id }) === false) {
             errorCode = 409;
             throw new Error("Erro: ID de usuário não cadastrado.")
         }
         limitDate = Task.transformDate(limitDate);
-        if (!validator.isDate(limitDate)) {
+        if (!validator.isDate(limitDate) || validator.isBefore(limitDate)) {
             errorCode = 422;
-            throw new Error("Erro: Data inválida. (formato: DD-MM-AAAA)")
-        }
-        if (validator.isBefore(limitDate)) {
-            errorCode = 422;
-            throw new Error("Erro: Data inválida. Insira uma data futura.)")
+            throw new Error("Erro: Insira uma data válida e futura. (formato: DD-MM-AAAA)")
         }
         const newTask: Type.Task = {
             task_id: randomUUID(),
@@ -36,8 +37,8 @@ export const createTask = async (req: Request, res: Response) => {
             status: "to do",
             creatorUserId: user_id
         }
-        const result = await Task.create(newTask);
-        res.status(200).send(result);
+        await connection("Tasks").insert(newTask);
+        res.status(200).send({ message: "Tarefa criada com sucesso." });
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message })
     }

@@ -16,8 +16,8 @@ export type Task = {
     task_id: string,
     title: string,
     description: string,
-    limitDate: Date,
-    creationDate: Date,
+    limitDate: Date | string,
+    creationDate: Date | string,
     status: string,
     creatorUserId: string
 }

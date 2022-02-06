@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import connection from "../../connection";
 import { User } from "../../models/Users";
 import validator from "validator";
 import * as Type from "../../types/Type";
@@ -11,6 +12,9 @@ export const createUser = async (req: Request, res: Response) => {
         if (!name || !nickname || !email) {
             errorCode = 422;
             throw new Error("Erro: Parâmetros insuficientes.")
+        } if (typeof name !== "string" || typeof nickname !== "string") {
+            errorCode = 422;
+            throw new Error("Erro: parâmetros inválidos.");
         }
         if (!validator.isEmail(email)) {
             errorCode = 422;
@@ -26,8 +30,8 @@ export const createUser = async (req: Request, res: Response) => {
             nickname,
             email
         }
-        const result = await User.create(newUser);
-        res.send({ message: result });
+        await connection("Users").insert(newUser);
+        res.send({ message: "Conta criadad com sucesso!" });
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message })
     }
