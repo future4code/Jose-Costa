@@ -9,6 +9,7 @@ export const getTasksDelayed = async (req: Request, res: Response) => {
             SELECT * FROM Tasks WHERE DATEDIFF(CURDATE(),Tasks.limitDate) > 0;
         `)
         const newResult = await Task.toLocaleDate(result[0]);
+        
         res.status(200).send(newResult);
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message });

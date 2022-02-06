@@ -15,8 +15,10 @@ export const deleteTask = async (req: Request, res: Response) => {
             errorCode = 400;
             throw new Error("Erro: ID de tarefa não cadastrado.")
         }
+
         await connection("TasksAndResponsible").del().where({ task_id });
         await connection("Tasks").del().where({ task_id });
+        
         res.status(200).send({ message: "Tarefa deletada com sucesso!" });
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message })

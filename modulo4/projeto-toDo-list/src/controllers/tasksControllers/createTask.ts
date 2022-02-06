@@ -28,6 +28,7 @@ export const createTask = async (req: Request, res: Response) => {
             errorCode = 422;
             throw new Error("Erro: Insira uma data válida e futura. (formato: DD-MM-AAAA)")
         }
+
         const newTask: Type.Task = {
             task_id: randomUUID(),
             title,
@@ -37,6 +38,7 @@ export const createTask = async (req: Request, res: Response) => {
             status: "to do",
             creatorUserId: user_id
         }
+        
         await connection("Tasks").insert(newTask);
         res.status(200).send({ message: "Tarefa criada com sucesso." });
     } catch (err: any) {

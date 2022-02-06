@@ -17,8 +17,8 @@ export const getUser = async (req: Request, res: Response) => {
         }
 
         const result = await connection("Users").select().where({ user_id });
-        res.status(200).send({ user_id: result[0].user_id, nickname: result[0].nickname });
 
+        res.status(200).send({ user_id: result[0].user_id, nickname: result[0].nickname });
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message })
     }

@@ -24,13 +24,16 @@ export const createUser = async (req: Request, res: Response) => {
             errorCode = 409;
             throw new Error("Erro: Já existe uma conta cadastrada nesse e-mail.")
         }
+
         const newUser: Type.User = {
             user_id: randomUUID(),
             name,
             nickname,
             email
         }
+
         await connection("Users").insert(newUser);
+        
         res.send({ message: "Conta criada com sucesso!" });
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message })

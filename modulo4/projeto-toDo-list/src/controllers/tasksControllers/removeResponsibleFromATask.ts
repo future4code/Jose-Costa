@@ -26,7 +26,9 @@ export const removeResponsibleFromATask = async (req: Request, res: Response) =>
             errorCode = 400;
             throw new Error("Erro: Usuário não está atribuído a essa tarefa.")
         }
+
         await connection("TasksAndResponsible").del().where({ task_id }).andWhere({ user_id });
+        
         res.status(200).send({ message: "Usuário retirado da tarefa com sucesso." });
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message })

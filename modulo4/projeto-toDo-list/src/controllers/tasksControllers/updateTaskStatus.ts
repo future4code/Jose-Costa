@@ -20,7 +20,9 @@ export const updateTaskStatus = async (req: Request, res: Response) => {
             errorCode = 422;
             throw new Error("Erro: Insira um status válido ('to do', 'doing' ou 'done').");
         }
+
         const result = await Task.updateTaskStatus(task_ids, status);
+        
         res.status(200).send(result);
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message })

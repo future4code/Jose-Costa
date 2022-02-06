@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import connection from "../../connection";
 import { Task } from "../../models/Tasks";
-import { User } from "../../models/Users";
 
 export const getUsersResponsibleForTask = async (req: Request, res: Response) => {
     let errorCode: number = 500;

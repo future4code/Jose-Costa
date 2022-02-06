@@ -17,8 +17,8 @@ export const getTasksByStatus = async (req: Request, res: Response) => {
 
         const result = await connection("Tasks").select().where({ status });
         const newResult = await Task.toLocaleDate(result);
+
         res.status(200).send(newResult);
-        
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message });
     }

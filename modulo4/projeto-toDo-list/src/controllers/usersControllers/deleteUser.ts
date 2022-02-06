@@ -15,9 +15,11 @@ export const deleteUser = async (req: Request, res: Response) => {
             errorCode = 400;
             throw new Error("Erro: ID não cadastrado.")
         }
+
         await connection("TasksAndResponsible").del().where({ user_id });
         await connection("Tasks").del().where({ creatorUserId: user_id });
         await connection("Users").del().where({ user_id });
+        
         res.status(200).send({ message: "Usuário deletado com sucesso!" });
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message })

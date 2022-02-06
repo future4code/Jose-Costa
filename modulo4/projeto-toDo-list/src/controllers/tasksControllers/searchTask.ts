@@ -9,6 +9,7 @@ export const searchTask = async (req: Request, res: Response) => {
             errorCode = 422;
             throw new Error("Erro: Parâmetros insuficientes.")
         }
+        
         const result = await connection("Tasks").select().whereILike("title", `%${query}%`).orWhere("description", "LIKE", `%${query}%`);
 
         const newResult = result.map((task: any) => {
@@ -17,7 +18,7 @@ export const searchTask = async (req: Request, res: Response) => {
             return task;
         });
 
-          if (newResult.length > 0) { res.status(200).send({ tasks: result }); }
+        if (newResult.length > 0) { res.status(200).send({ tasks: result }); }
         else { res.status(200).send(result); }
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message });

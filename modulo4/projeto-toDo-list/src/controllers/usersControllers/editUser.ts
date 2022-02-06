@@ -20,12 +20,13 @@ export const editUser = async (req: Request, res: Response) => {
             errorCode = 400;
             throw new Error("Erro: ID não cadastrado.")
         }
+        
         let newData: undefined | Type.Edit;
         name && nickname ? newData = { name, nickname } : "";
         !name && nickname ? newData = { nickname } : "";
         name && !nickname ? newData = { name } : "";
-  
-       await connection("Users").update(newData).where({ user_id });
+
+        await connection("Users").update(newData).where({ user_id });
 
         res.status(200).send(newData);
     } catch (err: any) {

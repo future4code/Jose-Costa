@@ -26,7 +26,9 @@ export const signUsersToTask = async (req: Request, res: Response) => {
             errorCode = 400;
             throw new Error(`Erro: ID '${responsibleExists[0].user_id}' já está atribuído nessa tarefa.`)
         }
+
         const result = await Task.insertUsersToTask(task_id, users_id);
+        
         res.status(200).send({ message: result });
     } catch (err: any) {
         res.status(errorCode).send({ message: err.sqlMessage || err.message })
