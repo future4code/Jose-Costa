@@ -5,7 +5,7 @@ export default async function selectAllUsers(name: string, type: string, sort: s
    if (page < 1 || isNaN(page)) {
       page = 1;
    }
-   let size = 1;
+   let size = 4;
    let offset = size * (page - 1)
 
    const result = await connection.raw(`
