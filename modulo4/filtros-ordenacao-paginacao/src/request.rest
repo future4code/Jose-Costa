@@ -1,0 +1,2 @@
+GET http://localhost:3003/getAllUsers/name/asc/1?name=a&type=teacher
+Content-Type: application/json
