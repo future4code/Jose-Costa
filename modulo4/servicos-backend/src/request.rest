@@ -1,0 +1,10 @@
+POST http://localhost:3003/createUser
+Content-Type: application/json
+
+{
+    "email": "email@mail.com",
+    "password": "123",
+    "cep": "58415-070",
+    "numero": 123,
+    "complemento": "complemento"
+}
