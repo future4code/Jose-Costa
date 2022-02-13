@@ -11,10 +11,13 @@ export const getAllProducts = async (req: Request, res: Response) => {
             errorCode = 422;
             throw new Error("Escolhe entre 'asc' ou 'desc'.");
         }
+        const searchTerm = search || "";
+
         const result = await connection("labecommerce_products")
         .select()
-        .orderBy("name", order)
-        .whereILike("name", `%${search}%`);
+        .where("name", "like", `%${searchTerm}%`)
+        .orderBy("name", order);
+        
         const allProducts = result.map(Products.to);
         
         res.status(200).send(allProducts);

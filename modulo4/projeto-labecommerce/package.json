@@ -6,7 +6,8 @@
   "scripts": {
     "start:dev": "ts-node-dev ./src/index.ts",
     "start": "tsc && node ./build/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "migrations": "ts-node-dev ./src/data/migrations.ts"
   },
   "keywords": [],
   "author": "",
