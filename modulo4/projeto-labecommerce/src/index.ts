@@ -8,10 +8,8 @@ import { getAllUsers } from "./endpoints/users/getAllUsers";
 
 app.post("/users", createUser);
 app.post("/products", createProduct);
+app.post("/purchases", registerPurchase);
 
 app.get("/users", getAllUsers);
 app.get("/users/:user_id/purchases", getUserPurchases);
 app.get("/products", getAllProducts);
-
-app.post("/purchases", registerPurchase);
-
