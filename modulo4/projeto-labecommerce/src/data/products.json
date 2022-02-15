@@ -1,0 +1,20 @@
+[
+	{
+		"id" : "0a4147ad-30dd-4547-9e35-94e655d02f11",
+		"name" : "Chuteira Mercurial Superfly",
+		"price" : 600,
+		"image_url" : "http://1.bp.blogspot.com/-wK41pc0klSs/UBihNt1CRXI/AAAAAAAAASU/arENzxpv0zs/s320/vaporberry.jpg"
+	},
+	{
+		"id" : "4d3bc362-f838-43d6-9e06-5f3883873f72",
+        "name" : "Short Canterbury",
+		"price" : 100,
+		"image_url" : "https://www.canterburynz.com.au/images/classics-tactic-short-p373-7010_medium.jpg"
+	},
+	{
+		"id" : "5a7e728a-3afa-47d6-850d-0fba7786e6a3",
+        "name" : "Meião Kipsta",
+		"price" : 40,
+		"image_url" : "https://http2.mlstatic.com/D_NQ_NP_779987-MLB47728139186_102021-W.jpg"
+	}
+]
