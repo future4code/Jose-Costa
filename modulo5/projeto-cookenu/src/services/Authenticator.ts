@@ -6,13 +6,19 @@ dotenv.config()
 
 export class Authenticator {
     static generateToken = (payload: AuthenticationData) => {
-        const token = sign(payload, process.env.JWT_SECRET as string, { expiresIn: process.env.EXPIRES_IN });
+        try {
+        console.log(payload)
+        const token = sign(payload, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_EXPIRES_IN });
+        console.log(token)
         return token;
+        } catch (err: any) {
+            console.log(err.message)
+        }
     }
 
     static getTokenData = (token: string) => {
-        const tokenData = verify(token, process.env.JWT_SECRET as string,) as JwtPayload
-        return { id: tokenData.id, role: tokenData.role }
+        const tokenData = verify(token, process.env.JWT_SECRET as string) as JwtPayload
+        return { id: tokenData.id }
     }
 }
 

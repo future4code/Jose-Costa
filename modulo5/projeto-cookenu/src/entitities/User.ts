@@ -18,17 +18,23 @@ export class User {
         }
     }
    
-    getPassword () {
-        return this.password;
-    }
-    
-    getId () {
+    getId(): string {
         return this.id;
+    }
+
+    getName(): string {
+        return this.name;
+    }
+
+    getEmail(): string {
+        return this.email;
+    }
+
+    getPassword(): string {
+        return this.password;
     }
 
     toUserModel(data: any) {
         return new User(data.id, data.name, data.email, data.password);
     }
 }
-
-const a = new User("", "asd", "asd", "ads");
