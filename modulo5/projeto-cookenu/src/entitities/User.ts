@@ -1,4 +1,3 @@
-import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/idGenerator";
 
 export enum USER_ROLES {
@@ -12,12 +11,12 @@ export class User {
         private name: string,
         private email: string,
         private password: string,
-    ) { 
+    ) {
         if (!id) {
             this.id = IdGenerator.execute();
         }
     }
-   
+
     getId(): string {
         return this.id;
     }
@@ -34,7 +33,13 @@ export class User {
         return this.password;
     }
 
-    toUserModel(data: any) {
+    static toModel(data: any) {
         return new User(data.id, data.name, data.email, data.password);
     }
+}
+
+export interface UserInfo {
+    id: string;
+    name: string;
+    email: string;
 }

@@ -1,12 +1,13 @@
-import { BaseDatabase } from "../../../data/BaseDatabase";
-import { User } from "../../../entitities/User";
-import { CustomError } from "../../../services/CustomError";
+import { BaseDatabase } from "../../data/BaseDatabase";
+import { User } from "../../entitities/User";
+import { CustomError } from "../../services/CustomError";
 import { IUserRepository } from "../IUserRepository";
 
 export class UserRepository implements IUserRepository {
-    constructor() { }
-    repo: string = "cookenu_users";
-    
+    constructor(private repo?: string) {
+        this.repo = "cookenu_users";
+    }
+
     async find(column: string, where: string): Promise<User[]> {
         try {
             const response = await BaseDatabase.connection(this.repo).select().where(column, "=", where);

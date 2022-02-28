@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CustomError } from "../../services/CustomError";
+import { CustomError } from "../../../services/CustomError";
 import { SignupUseCase } from "./signupUseCase";
 
 export class SignupController {
@@ -9,7 +9,7 @@ export class SignupController {
         try {
             const { name, email, password } = req.body;
             const token = await this.SignupUseCase.execute({ name, email, password });
-            res.status(201).send({ token: token });        
+            res.status(201).send({ token: token });
         } catch (err) {
             if (err instanceof CustomError) {
                 res.status(err.statusCode).send({ message: err.message });

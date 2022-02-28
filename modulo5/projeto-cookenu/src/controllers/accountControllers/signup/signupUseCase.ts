@@ -1,16 +1,14 @@
-import { User } from "../../entitities/User";
-import { CustomError } from "../../services/CustomError";
+import { User } from "../../../entitities/User";
+import { CustomError } from "../../../services/CustomError";
 import validator from "validator";
 import { ICreateUserDTO } from "./signupDTO";
-import { HashManager } from "../../services/HashManager";
-import { IUserRepository } from "../repositories/IUserRepository";
-import { Authenticator } from "../../services/Authenticator";
+import { HashManager } from "../../../services/HashManager";
+import { IUserRepository } from "../../../repositories/IUserRepository";
+import { Authenticator } from "../../../services/Authenticator";
 
 export class SignupUseCase {
-    constructor(
-        private IUserRepository: IUserRepository
-    ) {
-    }
+    constructor(private IUserRepository: IUserRepository) {}
+    
     async execute(data: ICreateUserDTO): Promise<string | undefined> {
         if (!data.name || !data.email || !data.password) {
             throw new CustomError(422, "Parâmetros inválidos.");

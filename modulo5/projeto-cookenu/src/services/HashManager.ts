@@ -11,7 +11,7 @@ export class HashManager {
         return result;
     }
 
-    async compare(s: string, hash: string): Promise<boolean> {
+    static async compare(s: string, hash: string): Promise<boolean> {
         return bcrypt.compareSync(s, hash);
     }
 }
