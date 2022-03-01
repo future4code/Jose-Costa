@@ -7,11 +7,11 @@ export enum USER_ROLES {
 
 export class Recipe {
     constructor(
-        private id: string,
-        private title: string,
-        private description: string,
-        private createdAt: Date | string,
-        private user_id: string,
+        protected id: string,
+        protected title: string,
+        protected description: string,
+        protected createdAt: Date | string,
+        protected user_id: string,
     ) {
         if (!id) {
             this.id = IdGenerator.execute();
@@ -47,3 +47,23 @@ export class Recipe {
     }
 }
 
+export class RecipeFeed extends Recipe {
+    constructor(
+        protected id: string,
+        protected title: string,
+        protected description: string,
+        protected createdAt: Date | string,
+        protected user_id: string,
+        protected user_name: string) {
+        super(id, title, description, createdAt, user_id)
+        this.user_name = user_name;
+
+        if (createdAt) {
+            this.createdAt = new Date(createdAt).toLocaleDateString();
+        }
+    }
+
+    static toModel(data: any) {
+        return new RecipeFeed(data.id, data.title, data.description, data.createdAt, data.user_id, data.name);
+    }
+}

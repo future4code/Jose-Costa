@@ -8,6 +8,7 @@ import { signupController } from "./controllers/accountControllers/signup";
 import { getRecipeByIdController } from "./controllers/recipeControllers/getRecipeById";
 import { followUseController } from "./controllers/userControllers/followUser";
 import { unfollowUseController } from "./controllers/userControllers/unfollowUser";
+import { feedController } from "./controllers/userControllers/feed";
 
 // accounts:
 app.post("/signup", (req: Request, res: Response) => { signupController.execute(req, res); });
@@ -23,3 +24,4 @@ app.get("/user/:id", (req: Request, res: Response) => { getProfileByIdController
 // recipes:
 app.post("/recipe", (req: Request, res: Response) => { createRecipeController.execute(req, res); });
 app.get("/recipe/:id", (req: Request, res: Response) => { getRecipeByIdController.execute(req, res); });
+app.get("/feed", (req: Request, res: Response) => { feedController.execute(req, res); });
