@@ -9,19 +9,26 @@ import { getRecipeByIdController } from "./controllers/recipeControllers/getReci
 import { followUseController } from "./controllers/userControllers/followUser";
 import { unfollowUseController } from "./controllers/userControllers/unfollowUser";
 import { feedController } from "./controllers/userControllers/feed";
+import { editRecipeController } from "./controllers/recipeControllers/editRecipe";
+import { deleteRecipeController } from "./controllers/recipeControllers/deleteRecipe";
+import { deleteAccountController } from "./controllers/accountControllers/deleteAccount";
 
 // accounts:
 app.post("/signup", (req: Request, res: Response) => { signupController.execute(req, res); });
 app.post("/login", (req: Request, res: Response) => { loginController.execute(req, res); });
+app.delete("/user/:id?", (req: Request, res: Response) => { deleteAccountController.execute(req, res); });
 
 // users:
-app.get("/user/follow", (req: Request, res: Response) => { followUseController.execute(req, res); });
-app.get("/user/unfollow", (req: Request, res: Response) => { unfollowUseController.execute(req, res); });
+app.post("/user/follow", (req: Request, res: Response) => { followUseController.execute(req, res); });
+app.post("/user/unfollow", (req: Request, res: Response) => { unfollowUseController.execute(req, res); });
 
 app.get("/user/profile", (req: Request, res: Response) => { getProfileController.execute(req, res); });
 app.get("/user/:id", (req: Request, res: Response) => { getProfileByIdController.execute(req, res); });
 
+app.get("/feed", (req: Request, res: Response) => { feedController.execute(req, res); });
+
 // recipes:
 app.post("/recipe", (req: Request, res: Response) => { createRecipeController.execute(req, res); });
+app.put("/recipe/edit", (req: Request, res: Response)=> { editRecipeController.execute(req, res); });
 app.get("/recipe/:id", (req: Request, res: Response) => { getRecipeByIdController.execute(req, res); });
-app.get("/feed", (req: Request, res: Response) => { feedController.execute(req, res); });
+app.delete("/recipe/:id", (req: Request, res: Response) => { deleteRecipeController.execute(req, res); });

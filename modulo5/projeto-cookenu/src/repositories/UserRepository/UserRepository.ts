@@ -24,4 +24,12 @@ export class UserRepository implements IUserRepository {
             throw new CustomError(500, err.sqlMessage);
         }
     }
+
+    async delete(whereColumn: string, where: string): Promise<void> {
+        try {
+            await BaseDatabase.connection(this.repo).delete().where(whereColumn, where);
+        } catch (err: any) {
+            throw new CustomError(500, err.sqlMessage);
+        }
+    }
 }

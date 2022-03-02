@@ -10,7 +10,7 @@ export class SignupUseCase {
     constructor(private IUserRepository: IUserRepository) {}
     
     async execute(data: ICreateUserDTO): Promise<string | undefined> {
-        if (!data.name || !data.email || !data.password) {
+        if (!data.name || !data.email || !data.password || !data.role) {
             throw new CustomError(422, "Parâmetros inválidos.");
         }
         if (!validator.isEmail(data.email)) {
@@ -26,9 +26,9 @@ export class SignupUseCase {
         }
 
         const newPassword = await HashManager.create(data.password)
-        const user = new User("", data.name, data.email, newPassword);
+        const user = new User("", data.name, data.email, newPassword, data.role);
         await this.IUserRepository.create(user);
-        const token = Authenticator.generateToken({ id: user.getId() } );
+        const token = Authenticator.generateToken({ id: user.getId(), role: user.getRole() } );
         return token;
     }
 }

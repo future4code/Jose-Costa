@@ -1,16 +1,12 @@
 import { IdGenerator } from "../services/idGenerator";
 
-export enum USER_ROLES {
-    NORMAL = "normal",
-    ADMIN = "admin",
-}
-
 export class User {
     constructor(
         private id: string,
         private name: string,
         private email: string,
         private password: string,
+        private role: string
     ) {
         if (!id) {
             this.id = IdGenerator.execute();
@@ -33,8 +29,12 @@ export class User {
         return this.password;
     }
 
+    getRole(): string {
+        return this.role;
+    }
+
     static toModel(data: any) {
-        return new User(data.id, data.name, data.email, data.password);
+        return new User(data.id, data.name, data.email, data.password, data.role);
     }
 }
 

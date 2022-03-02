@@ -42,6 +42,10 @@ export class Recipe {
         return this.createdAt;
     }
 
+    getUserId(): string {
+        return this.user_id;
+    }
+
     static toModel(data: any) {
         return new Recipe(data.id, data.title, data.description, data.createdAt, data.user_id);
     }

@@ -23,7 +23,7 @@ export class LoginUseCase  {
         const compare = await HashManager.compare(data.password, user.getPassword());
         
         if (compare) {
-            const token = Authenticator.generateToken({ id: user.getId() });
+            const token = Authenticator.generateToken({ id: user.getId(), role: user.getRole() });
             return token;
         } else {
             throw new CustomError(401, "Usuário ou senha inválida.")

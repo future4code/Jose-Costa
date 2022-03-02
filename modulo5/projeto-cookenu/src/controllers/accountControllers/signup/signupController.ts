@@ -7,8 +7,8 @@ export class SignupController {
 
     async execute(req: Request, res: Response): Promise<void> {
         try {
-            const { name, email, password } = req.body;
-            const token = await this.SignupUseCase.execute({ name, email, password });
+            const { name, email, password, role } = req.body;
+            const token = await this.SignupUseCase.execute({ name, email, password, role });
             res.status(201).send({ token: token });
         } catch (err) {
             if (err instanceof CustomError) {

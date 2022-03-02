@@ -33,8 +33,24 @@ export class RecipeRepository implements IRecipeRepository {
                 .join("cookenu_recipes", "cookenu_followers.follow_id", "=", "cookenu_recipes.user_id")
                 .join("cookenu_users", "cookenu_users.id", "=", "cookenu_followers.follow_id")
                 .where("cookenu_followers.user_id", id);
-           const result = response.map((item) => RecipeFeed.toModel(item));
-           return result;
+            const result = response.map((item) => RecipeFeed.toModel(item));
+            return result;
+        } catch (err: any) {
+            throw new CustomError(500, err.sqlMessage);
+        }
+    }
+
+    async update(recipe_id: string, title?: string, description?: string): Promise<void> {
+        try {
+            await BaseDatabase.connection(this.repo).update({ title: title, description: description }).where({ id: recipe_id });
+        } catch (err: any) {
+            throw new CustomError(500, err.sqlMessage);
+        }
+    }
+
+    async delete(whereColumn: string, where: string) {
+        try {
+            await BaseDatabase.connection(this.repo).delete().where(whereColumn, where);
         } catch (err: any) {
             throw new CustomError(500, err.sqlMessage);
         }

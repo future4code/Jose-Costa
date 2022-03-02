@@ -34,4 +34,12 @@ export class FollowRepository implements IFollowRepository {
             throw new CustomError(400, err.sqlMessage || err.message);
         }
     }
+
+    async delete(whereColumn: string, where: string): Promise<void> {
+        try {
+            await BaseDatabase.connection(this.repo).delete().where(whereColumn, where);
+        } catch (err: any) {
+            throw new CustomError(500, err.sqlMessage);
+        }
+    }
 }

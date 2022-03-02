@@ -9,6 +9,7 @@ export class GetProfileUseCase {
 
     async execute(data: IGetProfileDTO): Promise<UserInfo> {
         const userInfo = Authenticator.getTokenData(data.authorization);
+        console.log(userInfo.role)
         const result = await this.IUserRepository.find("id", userInfo.id);
         const user = User.toModel(result[0]);
         return {

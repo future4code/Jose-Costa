@@ -18,7 +18,7 @@ export class Authenticator {
     static getTokenData = (token: string) => {
         try {
             const tokenData = verify(token, process.env.JWT_SECRET as string) as JwtPayload;
-            return { id: tokenData.id };
+            return { id: tokenData.id, role: tokenData.role };
         } catch (err) {
             throw new CustomError(401, "Acesso negado.");
         }
