@@ -20,16 +20,12 @@ export class DeleteAccountUseCase {
         const userInfo = Authenticator.getTokenData(data.authorization);
 
         let deleteId;
-        if (data.id && userInfo.role === "admin") {
-            deleteId = data.id;
-        } if (!data.id) {
-            deleteId = userInfo.id;
-        }
+        if (data.id && userInfo.role === "admin") { deleteId = data.id; }
+        if (!data.id) { deleteId = userInfo.id; }
 
         const userAlreadyExists = await this.IUserRepository.find("id", deleteId);
-        if (!userAlreadyExists.length) {
-            throw new CustomError(401, "Usuário não cadastrado.");
-        }
+        if (!userAlreadyExists.length) { throw new CustomError(401, "Usuário não cadastrado."); }
+        
         await this.IFollowRepository.delete("user_id", deleteId);
         await this.IFollowRepository.delete("follow_id", deleteId);
         await this.IRecipeRepository.delete("user_id", deleteId);

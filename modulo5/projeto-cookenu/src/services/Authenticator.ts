@@ -11,7 +11,7 @@ export class Authenticator {
             const token = sign(payload, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_EXPIRES_IN });
             return token;
         } catch (err: any) {
-            console.log(err.message)
+            throw new CustomError(401, err.message);
         }
     }
 
@@ -23,7 +23,22 @@ export class Authenticator {
             throw new CustomError(401, "Acesso negado.");
         }
     }
+
+    static generateTokenEmail = (payload: { email: string }) => {
+        try {
+            const token = sign(payload, process.env.JWT_SECRET as string, { expiresIn: process.env.JWT_EXPIRES_EMAIL });
+            return token;
+        } catch (err: any) {
+            throw new CustomError(401, err.message);
+        }
+    }
+
+    static getTokenEmail = (token: string) => {
+        try {
+            const tokenData = verify(token, process.env.JWT_SECRET as string) as JwtPayload;
+            return { email: tokenData.email };
+        } catch (err: any) {
+            throw new CustomError(401, err.message);
+        }
+    }
 }
-
-
-Authenticator.generateToken

@@ -32,4 +32,12 @@ export class UserRepository implements IUserRepository {
             throw new CustomError(500, err.sqlMessage);
         }
     }
+
+    async update(whereColumn: string, where: string, dataColumn: string, data: string): Promise<void> {
+        try {
+            await BaseDatabase.connection(this.repo).update(dataColumn, data).where(whereColumn, where);
+        } catch (err: any) {
+            throw new CustomError(500, err.sqlMessage);
+        }
+    }
 }
