@@ -1,0 +1,21 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "email": "rodolfo@joganada.com.br",
+    "password": "nadajoga"
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "rodolfo@joganada.com.br",
+    "password": "nadajoga"
+}
+
+###
+GET http://localhost:3003/user/profile
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdhMDAwNjFhLTYyZjQtNDdiOC04MDhhLTU4ZWE2Y2JhZDA1ZiIsImlhdCI6MTY0NTQ3NTE3NywiZXhwIjoxNjQ1NDc1MjM3fQ.B20s3oFnIlj7t_9pN1yZ_2g4RqxcsFQ2-Qn0bogyXck
