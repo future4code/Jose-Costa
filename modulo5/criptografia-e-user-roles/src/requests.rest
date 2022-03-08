@@ -1,0 +1,22 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "email": "leilis@joganada.com.br",
+    "password": "nadajoga",
+    "role": "normal"
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "leilis@joganada.com.br",
+    "password": "nadajoga"
+}
+
+###
+GET http://localhost:3003/user/profile
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMjM2ZDY5LTg0ZTAtNDYxMi1iNDJjLTc5ZDM5NjliZThlYSIsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NDU1NTc4MDUsImV4cCI6MTY0NTU1Nzg2NX0.3IssKbrIL7cevmOkY4qMv9-xmQGu5Ld32Gd6LVJcEMs
